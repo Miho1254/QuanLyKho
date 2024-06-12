@@ -8,10 +8,12 @@ class ProductController extends Controller
 {
     public function index() {
         // Hiển thị danh sách sản phẩm
+        return view('products.index');
     }
 
     public function create() {
         // Hiển thị form tạo sản phẩm mới
+        return view('products.create');
     }
 
     public function store(Request $request) {
