@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div style="height: 100%; width: 100%;">
-
     <div class="" style="height: 60%; width: 100%;">
         <div class="" style="height: 100%; width: 100%; display: flex">
             @include('layouts.sidebar')

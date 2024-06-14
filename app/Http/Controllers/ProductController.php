@@ -26,6 +26,7 @@ class ProductController extends Controller
 
     public function edit($id) {
         // Hiển thị form chỉnh sửa sản phẩm
+        return view('products.edit');
     }
 
     public function update(Request $request, $id) {
