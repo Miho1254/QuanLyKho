@@ -22,6 +22,7 @@ class AdminController extends Controller
 
     public function edit($id) {
         // Hiển thị form chỉnh sửa nhân viên
+        return view('admins.edit');
     }
 
     public function update(Request $request, $id) {
