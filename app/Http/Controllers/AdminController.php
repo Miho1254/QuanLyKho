@@ -8,10 +8,12 @@ class AdminController extends Controller
 {
     public function index() {
         // Hiển thị danh sách nhân viên
+        return view('admins.index');
     }
 
     public function create() {
         // Hiển thị form tạo nhân viên mới
+        return view('admins.create');
     }
 
     public function store(Request $request) {
