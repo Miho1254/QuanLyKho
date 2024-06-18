@@ -233,7 +233,7 @@
                     <td class="px-6 py-4">
                         <!-- Modal toggle -->
                         <a href="#" type="button" data-modal-target="editUserModal" data-modal-show="editUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
-                        <a href="#" type="button" data-modal-target="removeUserModal" data-modal-show="removeUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Remove user</a>
+                        <a href="#" type="button" data-modal-target="removeUserModal" data-modal-show="removeUserModal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"></a>
                     </td>
                 </tr>
                           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
