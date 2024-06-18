@@ -8,6 +8,7 @@
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body style="height: 100%; width: 100%;" class="dark:bg-gray-900">
     {{-- Header --}}
     <div class="" style="height: 9%; width: 100%;">
@@ -15,19 +16,18 @@
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                    <span
-                        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
                 <div class="flex md:order-2">
-                    
+
                     <button data-collapse-toggle="navbar-search" type="button"
                         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                         aria-controls="navbar-search" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M1 1h15M1 7h15M1 13h15" />
                         </svg>
                     </button>
                 </div>
@@ -42,73 +42,77 @@
                 <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
                         <a href="https://flowbite.com/" class="flex items-center">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3"
-                                alt="FlowBite Logo" />
+                            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
                             <span
                                 class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                                
+
                         </a>
-                        
+
                     </div>
                     <div class="grid grid-cols-5 gap-8 sm:gap-4 sm:grid-cols-1">
-                        <div>                         
-                            
-                              <ul class="text-gray-500 dark:text-gray-400 font-medium mt-1 ">
-                                  <li class="mb-4">
-                                    <p style="font-size:16px font-semibold " class=" mt-1">
-                                        0778629133
-                                    </p>
-                                <p style="font-size:15px " class=" ">Địa Chỉ:Đường DC13, Sơn Kỳ, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam</p>
-                                  <p style="font-size:14px " class=" ">dinhhieu3051@gmail.com</p>
-                             <div class="flex mt-2">  
-    <!-- Facebook Icon -->
-    <a href="https://www.facebook.com" target="_blank" class=" hover:text-gray-300 mr-2 ">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" stroke="none">
-            <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692V11.41h3.127V8.575c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.917.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.296h-3.123V24h6.116c.732 0 1.325-.593 1.325-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
-        </svg>
-    </a>
+                        <div>
 
-    <!-- YouTube Icon -->
-    <a href="https://www.youtube.com" target="_blank" class=" hover:text-gray-300 mr-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" stroke="none">
-            <path d="M23.498 6.186c-.27-1.017-1.072-1.815-2.09-2.09C19.945 3.696 12 3.696 12 3.696s-7.945 0-9.408.4c-1.017.27-1.82 1.073-2.09 2.09C0 7.649 0 12 0 12s0 4.351.502 5.814c.27 1.017 1.072 1.815 2.09 2.09C4.055 20.304 12 20.304 12 20.304s7.945 0 9.408-.4c1.017-.27 1.82-1.073 2.09-2.09C24 16.351 24 12 24 12s0-4.351-.502-5.814zM9.545 15.568V8.432l6.273 3.568-6.273 3.568z"/>
-        </svg>
-    </a>
-<!-- Messenger Icon -->
-    <a href="https://www.messenger.com" target="_blank" class=" hover:text-gray-300 mr-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" stroke="none">
-            <path d="M12 2C6.486 2 2 6.486 2 12c0 3.805 2.224 7.112 5.595 8.841-.026.524-.069 1.315-.106 1.899-.165 2.559.992 2.572 1.886 1.846 1.215-.978 2.421-2.28 3.337-3.247.971-.02 1.929-.141 2.84-.354 3.372-1.273 5.448-4.633 5.448-8.232C22 6.486 17.514 2 12 2zm-.705 13.127l-2.13-2.248-5.373 2.248 6.973-7.877 2.155 2.25 5.346-2.25-6.971 7.877z"/>
-        </svg>
-    </a>
-
-    <!-- Instagram Icon -->
-    <a href="https://www.instagram.com" target="_blank" class=" hover:text-gray-300 mr-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" stroke="none">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.313 3.608 1.288.974.974 1.225 2.242 1.288 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.313 2.633-1.288 3.608-.974.974-2.242 1.225-3.608 1.288-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.313-3.608-1.288-.974-.974-1.225-2.242-1.288-3.608-.058-1.266-.069-1.646-.069-4.85s.012-3.584.07-4.85c.062-1.366.313-2.633 1.288-3.608.974-.974 2.242-1.225 3.608-1.288 1.266-.058 1.646-.069 4.85-.069zm0-2.163c-3.259 0-3.667.013-4.947.072-1.294.06-2.573.341-3.637 1.405-1.064 1.064-1.345 2.343-1.405 3.637-.059 1.28-.072 1.688-.072 4.947s.013 3.667.072 4.947c.06 1.294.341 2.573 1.405 3.637 1.064 1.064 2.343 1.345 3.637 1.405 1.28.059 1.688.072 4.947.072s3.667-.013 4.947-.072c1.294-.06 2.573-.341 3.637-1.405 1.064-1.064 1.345-2.343 1.405-3.637.059-1.28.072-1.688.072-4.947s-.013-3.667-.072-4.947c-.06-1.294-.341-2.573-1.405-3.637-1.064-1.064-2.343-1.345-3.637-1.405-1.28-.059-1.688-.072-4.947-.072zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.881 0 1.44 1.44 0 012.881 0z"/>
-        </svg>
-    </a>
-</div>    
-                              </ul>
-                          </div>
+                            <ul class="text-gray-500 dark:text-gray-400 font-medium mt-3>
+                                <li class="mb-4">
+                                    <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                                        Thông tin liên lạc</h2>
+                                        <div class="flex items-center mt-4">
+                                            <!-- Biểu tượng SVG -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 mr-2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                                            </svg>
+                                            <!-- Nội dung về số điện thoại -->
+                                            <p class="text-base">
+                                                <span class="font-bold">Số điện thoại:</span> 
+                                                <span class="ml-2">0778629133</span>
+                                            </p>
+                                        </div>
+                                        
+                                    <div class="flex items-center mt-4">
+                                        <!-- Biểu tượng SVG -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 mr-2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+                                        </svg>
+                                        <!-- Nội dung về địa chỉ -->
+                                        <p class="text-sm">
+                                            <span class="font-bold text-base">Địa Chỉ:</span> 
+                                            <span class="ml-1 text-base">Đường DC13, Sơn Kỳ, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam</span>
+                                        </p>
+                                    </div>
+                                    
+                                        <div class="flex items-center mt-4">
+                                            <!-- Biểu tượng SVG -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 mr-2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
+                                            </svg>
+                                            <!-- Nội dung về email -->
+                                            <p class="text-sm">
+                                                <span class="font-bold text-base">Mail:</span> 
+                                                <span class="ml-1 text-base">dinhnhieu3051@gmail.com</span>
+                                            </p>
+                                        </div>
+                                                                       
+                            </ul>
+                        </div>
                     </div>
                     <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                     
+
                         <div>
-                           
-                          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                                Resources</h2>
+
+                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                                công ty</h2>
                             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                                 <li class="mb-4">
-                                    <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                                    <a href="https://flowbite.com/" class="hover:underline">Trang Chủ</a>
                                 </li>
                                 <li>
-<a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                                    <a href="https://tailwindcss.com/" class="hover:underline">Sản Phẩm</a>
                                 </li>
                             </ul>
                         </div>
                         <div>
-                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow
-                                us</h2>
+                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Liên Hệ
+                            </h2>
                             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                                 <li class="mb-4">
                                     <a href="https://github.com/themesberg/flowbite"
@@ -117,33 +121,42 @@
                                 <li>
                                     <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
                                 </li>
+                                <li class="mb-4 mt-4">
+                                    <a href="https://www.facebook.com/"
+                                        class="hover:underline ">facebook</a>
+                                </li>
                             </ul>
                         </div>
                         <div>
-                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal
+                            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Nhập kho &amp; nhân sự
                             </h2>
                             <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                                <li class="mb-4">
-                                    <a href="#" class="hover:underline">Privacy Policy</a>
+                                <li class="mb-4 mt-1">
+                                    <a href="#" class="hover:underline">Nhập Kho</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                                    <a href="#" class="hover:underline">Xuất Kho</a>
+                                </li>
+
+                                <li class="mt-4">
+                                    <a href="#" class="hover:underline">Nhân Viên</a>
                                 </li>
                             </ul>
                         </div>
-                        
+
                     </div>
                 </div>
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8">
                 <div class="sm:flex sm:items-center sm:justify-between">
-                  <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400 mx-auto">© 2023 <a
-                          href="https://flowbite.com/" class="hover:underline">Mitoru</a>. All Rights
-                      Reserved.
-                  </span>
-              </div>
-              
+                    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400 mx-auto">© 2023 <a
+                            href="https://flowbite.com/" class="hover:underline">Mitoru</a>. All Rights
+                        Reserved.
+                    </span>
+                </div>
+
             </div>
         </footer>
     </div>
 </body>
+
 </html>
