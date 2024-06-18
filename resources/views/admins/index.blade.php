@@ -140,10 +140,10 @@
                                         <td class="px-6 py-4">2023-06-15</td>
                                         <td class="px-6 py-4">
                                             <!-- Modal toggle -->
-                                            <a href="{{ route('products.edit', 1) }}" type="button"
+                                            <a href="{{ route('admins.edit', 1) }}" type="button"
                                                 data-modal-target="editUserModal" data-modal-show="editUserModal"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                                                <3 user</a>
+                                                user</a>
                                         </td>
                                     </tr>
                                     <tr
@@ -170,10 +170,9 @@
                                         <td class="px-6 py-4">2023-06-11</td>
                                         <td class="px-6 py-4">
                                             <!-- Modal toggle -->
-                                            <a href="{{ route('products.edit', 1) }}" type="button"
-                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
+                                            <a href="{{ route('admins.edit', 1) }}" type="button"                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                                                <3 user</a>
+                                                user</a>
                                         </td>
                                     </tr>
                                     <tr
@@ -199,10 +198,9 @@
                                         <td class="px-6 py-4">2023-05-22</td>
                                         <td class="px-6 py-4">
                                             <!-- Modal toggle -->
-                                            <a href="{{ route('products.edit', 1) }}" type="button"
-                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
+                                            <a href="{{ route('admins.edit', 1) }}" type="button"                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                                                <3 user</a>
+                                                user</a>
                                         </td>
                                     </tr>
                                     <tr
@@ -229,10 +227,9 @@
                                         <td class="px-6 py-4">2023-04-30</td>
                                         <td class="px-6 py-4">
                                             <!-- Modal toggle -->
-                                            <a href="{{ route('products.edit', 1) }}" type="button"
-                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
+                                            <a href="{{ route('admins.edit', 1) }}" type="button"                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                                                <3 user</a>
+                                                user</a>
                                         </td>
                                     </tr>
                                     <tr
@@ -258,10 +255,9 @@
                                         <td class="px-6 py-4">2023-05-16</td>
                                         <td class="px-6 py-4">
                                             <!-- Modal toggle -->
-                                            <a href="{{ route('products.edit', 1) }}" type="button"
-                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
+                                            <a href="{{ route('admins.edit', 1) }}" type="button"                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                                                <3 user</a>
+                                                user</a>
                                         </td>
                                     </tr>
                                     <tr
@@ -288,10 +284,9 @@
                                         <td class="px-6 py-4">2023-03-20</td>
                                         <td class="px-6 py-4">
                                             <!-- Modal toggle -->
-                                            <a href="{{ route('products.edit', 1) }}" type="button"
-                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
+                                            <a href="{{ route('admins.edit', 1) }}" type="button"                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                                                <3 user</a>
+                                                user</a>
                                         </td>
                                     </tr>
                                     <tr
@@ -318,10 +313,9 @@
                                         <td class="px-6 py-4">2023-06-10</td>
                                         <td class="px-6 py-4">
                                             <!-- Modal toggle -->
-                                            <a href="{{ route('products.edit', 1) }}" type="button"
-                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
+                                            <a href="{{ route('admins.edit', 1) }}" type="button"                                                data-modal-target="editUserModal" data-modal-show="editUserModal"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
-                                                <3 user</a>
+                                                user</a>
                                         </td>
                                     </tr>
                                 </tbody>
