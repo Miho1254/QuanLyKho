@@ -8,10 +8,12 @@ class ExportController extends Controller
 {
     public function index() {
         // Hiển thị danh sách phiếu xuất kho
+        return view('exports.index');
     }
 
     public function create() {
         // Hiển thị form tạo phiếu xuất kho mới
+        return view('exports.create');
     }
 
     public function store(Request $request) {
@@ -20,6 +22,7 @@ class ExportController extends Controller
 
     public function edit($id) {
         // Hiển thị form chỉnh sửa phiếu xuất kho
+        return view('exports.edit');
     }
 
     public function update(Request $request, $id) {

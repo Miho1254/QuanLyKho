@@ -129,7 +129,6 @@
                                         <th scope="col" class="px-6 py-3">
                                             Giá
                                         </th>
-
                                         <th scope="col" class="px-6 py-3">
                                             trạng thái
                                         </th>
