@@ -20,11 +20,6 @@ class ExportController extends Controller
         // Lưu phiếu xuất kho mới vào database
     }
 
-    public function edit($id) {
-        // Hiển thị form chỉnh sửa phiếu xuất kho
-        return view('exports.edit');
-    }
-
     public function update(Request $request, $id) {
         // Cập nhật phiếu xuất kho vào database
     }

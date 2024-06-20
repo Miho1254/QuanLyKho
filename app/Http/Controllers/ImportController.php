@@ -18,10 +18,6 @@ class ImportController extends Controller
         // Lưu phiếu nhập kho mới vào database
     }
 
-    public function edit($id) {
-        // Hiển thị form chỉnh sửa phiếu nhập kho
-    }
-
     public function update(Request $request, $id) {
         // Cập nhật phiếu nhập kho vào database
     }
