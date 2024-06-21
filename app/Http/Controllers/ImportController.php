@@ -8,9 +8,11 @@ class ImportController extends Controller
 {
     public function index() {
         // Hiển thị danh sách phiếu nhập kho
+        return view('imports.index');
     }
 
     public function create() {
+        return view('imports.create');
         // Hiển thị form tạo phiếu nhập kho mới
     }
 
