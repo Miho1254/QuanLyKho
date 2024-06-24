@@ -37,14 +37,14 @@ npm i
 # biên dịch cấu trúc tailwind để sử dụng
 npm run build
 # tạo 1 APP key mới
+php artisan key:generate
 
 Sao chép file `.env.example` thành `.env`: `cp .env.example .env`
 
 Cấu hình cơ sở dữ liệu trong file `.env`
 
-php artisan key:generate
-# merge table structure lên cơ sở dữ liệu
-php artisan migrate
+# merge table structure lên cơ sở dữ liệu đồng thời chạy các seeders
+php artisan migrate:fresh --seed
 # chạy server
 php artisan serve
 # Truy cập ứng dụng trên trình duyệt tại 
