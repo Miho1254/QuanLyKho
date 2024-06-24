@@ -74,7 +74,9 @@ class WarehouseController extends Controller
         public function listProductsInWarehouse()
         {
             // Lấy danh sách các kho và số lượng sản phẩm trong mỗi kho
-            $warehouses = Warehouse::all();
+            // $warehouses = Warehouse::all();
+            $warehouses = Warehouse::paginate(10); // Phân trang với mỗi trang 10 bản ghi
+
     
             return view('warehouses.list_products', ['warehouses' => $warehouses]);
         }
