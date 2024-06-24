@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Xuất kho</title>
+    <title>Thêm phiếu nhập kho</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .product-table-container {
@@ -56,9 +56,19 @@
                                         </div> 
                                     </div>
                                 </div>
-                                <button type="button" id="add-product" class=" px-5 py-2 bg-blue-500 text-white rounded shadow">Thêm sản phẩm</button>
-                                <button type="submit" class="px-5 ml-2 py-2 bg-green-500 text-white rounded shadow">Tạo Phiếu</button>
-                            </form>
+                                <button type="submit" class="text-primary-700 inline-flex items-center border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:focus:ring-primary-800">
+                                    <svg class="mr-1 -ml-1 w-6 h-6 text-primary-700 dark:text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
+                                    </svg>
+                                    Thêm sản phẩm
+                                </button>                                
+                                <button type="submit" class="text-green-400 inline-flex items-center border-2 border-green-400 hover:bg-green-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-green-400 dark:hover:bg-green-400 dark:hover:text-white dark:focus:ring-green-300">
+                                    <svg class="mr-1 -ml-1 w-6 h-6 text-green-400 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
+                                    </svg>
+                                    Tạo phiếu
+                                </button>
+                        </form>
                             <div class="mt-6">
                                 <h2 class="text-xl font-bold mb-4 text-white px-5">Danh Sách Sản Phẩm</h2>
                                 <div class="product-table-container">

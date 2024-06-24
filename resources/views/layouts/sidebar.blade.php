@@ -38,9 +38,35 @@
                     <span class="ml-3">Sản phẩm</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('admins.index') }}"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                    <svg class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="ml-3">Người dùng</span>
+                </a>
+            </li>
+
         </ul>
         <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
             <li>
+                <a href="{{ route('warehouses.index') }}"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                    <svg class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <!-- Biểu tượng ngôi nhà -->
+                        <path fill="currentColor"
+                            d="M21.503 9.914l-9-7a1 1 0 0 0-1.005 0l-9 7A1 1 0 0 0 2 11v11a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V11a1 1 0 0 0-.497-0.086ZM12 4.763l6.777 5.224H5.223L12 4.763Zm8 15.237H4v-9.183l8-6.182 8 6.182v9.183Z"/>
+                    </svg>
+                    <span class="ml-3">Kho hàng</span>
+                </a>
+            </li>
+                        <li>
                 <a href="{{ route('imports.index') }}"
                     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -64,19 +90,6 @@
                             clip-rule="evenodd" />
                     </svg>
                     <span class="ml-3">Xuất kho</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('admins.index') }}"
-                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
-                    <svg class="flex-shrink-0 w-6 h-6 text-gray-400 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                        viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                            d="M12 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4h-4Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <span class="ml-3">Nhân viên</span>
                 </a>
             </li>
             <li>
