@@ -148,34 +148,123 @@
                         <!-- Thêm các mục checkbox khác nếu cần -->
                     </div>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Kho
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Số lượng
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <!-- Repeatable row for each warehouse -->
-                            @foreach ($warehouses as $warehouse)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                        {{ $warehouse->name }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <input type="number" name="warehouse_quantity[{{ $warehouse->id }}]" id="warehouse_quantity_{{ $warehouse->id }}"
-                                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                               placeholder="Số lượng" required>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div >
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Danh mục sản phẩm</label>
+
+                    <div class="grid grid-cols-2 gap-4 mb-4 overflow-auto" style="max-height: 95px; overflow-y: auto;">
+                        <!-- Kho 1 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 1</div>
+                            <input type="number" name="warehouse_quantity[kho1]" id="warehouse_quantity_kho1"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                                        
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                                            
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+                    
+                        <!-- Kho 2 -->
+                        <div>
+                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+
+                    </div>
                 </div>
                 
 
