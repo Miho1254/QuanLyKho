@@ -130,8 +130,8 @@
                                                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
                                             </div>
                                         </th>
-                                        <th scope="col" class="px-6 py-3">ID KHO</th>
                                         <th scope="col" class="px-6 py-3">MÃ KHO</th>
+                                        <th scope="col" class="px-6 py-3">TÊN KHO</th>
                                         <th scope="col" class="px-16 py-3">VỊ TRÍ</th>
                                         <!-- Increased width for Position column -->
                                         <th scope="col" class="px-12 py-3">DANH SÁCH SẢN PHẨM</th>
@@ -139,18 +139,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($warehouses as $warehouse)
                                     <tr
                                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td class="px-4 py-4">
                                             <div class="flex items-center">
-                                                <input id="checkbox-table-search-1" type="checkbox"
+                                                <input id="checkbox-table-search-{{ $warehouse->id }}" type="checkbox"
                                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                                <label for="checkbox-table-search-1"  class="sr-only">checkbox</label>
                                             </div>
                                         </td>
-                                        <td class="px-6 py-4">123</td>
-                                        <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td>
+                                        <td class="px-6 py-4">{{ $warehouse->id }}</td>
+                                        <td class="px-6 py-4">{{ $warehouse->name }}</td>
+                                        <td class="px-16 py-4">{{ $warehouse->location }}</td>
                                         <!-- Increased width for Position column -->
                                         <td class="px-12 py-4">
                                             <a href="{{ route('warehouses.list_products') }}"
@@ -161,145 +162,15 @@
                                                 class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                         </td>
                                     </tr>
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="px-4 py-4">
-                                            <div class="flex items-center">
-                                                <input id="checkbox-table-search-1" type="checkbox"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">123</td>
-                                        <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td>
-                                        <!-- Increased width for Position column -->
-                                        <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
-                                        </td>
-                                    </tr>
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="px-4 py-4">
-                                            <div class="flex items-center">
-                                                <input id="checkbox-table-search-1" type="checkbox"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">123</td>
-                                        <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td>
-                                        <!-- Increased width for Position column -->
-                                        <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
-                                        </td>
-                                    </tr>
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="px-4 py-4">
-                                            <div class="flex items-center">
-                                                <input id="checkbox-table-search-1" type="checkbox"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">123</td>
-                                        <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td>
-                                        <!-- Increased width for Position column -->
-                                        <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
-                                        </td>
-                                    </tr>
-                                    <tr
-                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <td class="px-4 py-4">
-                                            <div class="flex items-center">
-                                                <input id="checkbox-table-search-1" type="checkbox"
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">123</td>
-                                        <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td>
-                                        <!-- Increased width for Position column -->
-                                        <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}"
-                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
 
                                 </tbody>
                             </table>
 
-                            <div class="flex justify-center mt-4">
-                                <div class="relative z-0 inline-flex h-12 rounded-md shadow-sm -space-x-px"
-                                    aria-label="Pagination">
-                                    <!-- Nút Previous -->
-                                    <a href="#" id="prevBtn"
-                                        class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">
-                                        <span class="sr-only">Previous</span>
-                                        <!-- Icon previous -->
-                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a1 1 0 01-.707-.293l-7-7a1 1 0 010-1.414l7-7a1 1 0 011.414 1.414L4.414 10H17a1 1 0 110 2H4.414l6.293 6.293A1 1 0 0110 18z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-
-                                    <!-- Các nút số trang -->
-                                    <a href="#"
-                                        class="page-number relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">1</a>
-                                    <a href="#"
-                                        class="page-number relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">2</a>
-                                    <a href="#"
-                                        class="page-number relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">3</a>
-
-                                    <!-- Dấu ba chấm -->
-                                    <span id="dotsBtn"
-                                        class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 cursor-pointer">...</span>
-
-                                    <!-- Các nút số trang gần cuối -->
-                                    <a href="#"
-                                        class="page-number hidden relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">48</a>
-                                    <a href="#"
-                                        class="page-number hidden relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">49</a>
-                                    <a href="#"
-                                        class="page-number hidden relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">50</a>
-
-                                    <!-- Nút Next -->
-                                    <a href="#" id="nextBtn"
-                                        class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">
-                                        <span class="sr-only">Next</span>
-                                        <!-- Icon next -->
-                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10 2a1 1 0 01.707.293l7 7a1 1 0 01-1.414 1.414L15.586 10H3a1 1 0 110-2h12.586l-5.293-5.293A1 1 0 0110 2z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-                                </div>
+                        <!-- Pagination -->
+                        <div class="flex justify-center mt-4">
+                            {{ $warehouses->links() }}
+                        </div>
                             </div>
 
                             <!-- Hộp thoại nhập trang -->

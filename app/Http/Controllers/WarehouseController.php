@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Warehouse; // Import model Warehouse
+use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
 {
     // Phương thức hiển thị danh sách các kho
+
     public function index()
     {
-        $warehouses = Warehouse::all(); // Lấy danh sách tất cả các kho
+        // Lấy danh sách các kho với phân trang
+        $warehouses = Warehouse::paginate(10); // Phân trang với mỗi trang 10 bản ghi
+    
         return view('warehouses.index', ['warehouses' => $warehouses]);
     }
-
+    
     // Phương thức hiển thị form tạo mới kho
     public function create()
     {
