@@ -16,7 +16,7 @@
         <div class="" style="height: 60%; width: 100%;">
             <div class="" style="height: 100%; width: 100%; display: flex">
                 @include('layouts.sidebar')
-                <div class=" content w-full dark:bg-gray-900">
+                <div class=" content w-full text-center dark:bg-gray-900">
 
                     <section class="bg-white dark:bg-gray-900">
                         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
