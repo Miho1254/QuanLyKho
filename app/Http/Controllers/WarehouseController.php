@@ -70,15 +70,14 @@ class WarehouseController extends Controller
         return redirect()->route('warehouses.index')->with('success', 'Đã xóa kho thành công.');
     }
 
-        // Phương thức hiển thị số lượng sản phẩm của mỗi kho
-        public function listProductsInWarehouse()
-        {
-            // Lấy danh sách các kho và số lượng sản phẩm trong mỗi kho
-            // $warehouses = Warehouse::all();
-            $warehouses = Warehouse::paginate(10); // Phân trang với mỗi trang 10 bản ghi
+    // Phương thức hiển thị số lượng sản phẩm của mỗi kho
+    public function listProductsInWarehouse()
+    {
+        // Lấy danh sách các kho và số lượng sản phẩm trong mỗi kho
+        // $warehouses = Warehouse::all();
+        $warehouses = Warehouse::paginate(10); // Phân trang với mỗi trang 10 bản ghi
 
-    
-            return view('warehouses.list_products', ['warehouses' => $warehouses]);
-        }
-    
+
+        return view('warehouses.list_products', ['warehouses' => $warehouses]);
+    }
 }
