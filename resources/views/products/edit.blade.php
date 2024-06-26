@@ -53,234 +53,86 @@
                     </div>
                 </div>
 
-                <script>
-                    const priceInput = document.getElementById('price');
-
-                    // Function to format input value to VNĐ without the currency symbol
-                    function formatInputValue(value) {
-                        // Check if value is empty or not a number
-                        if (!value || isNaN(value)) {
-                            return '';
-                        }
-
-                        // Format number to VNĐ format without the currency symbol
-                        let formattedValue = new Intl.NumberFormat('vi-VN').format(value);
-                        return formattedValue.replace(/\u200B/g, ''); // Remove zero-width space if present
-                    }
-
-                    // Function to get current caret position in input field
-                    function getCaretPosition(input) {
-                        if (!input) return 0;
-                        if (input.selectionStart !== undefined) {
-                            return input.selectionStart;
-                        } else if (document.selection) {
-                            input.focus();
-                            var selection = document.selection.createRange();
-                            selection.moveStart('character', -input.value.length);
-                            return selection.text.length;
-                        }
-                        return 0;
-                    }
-
-                    // Function to set caret position in input field
-                    function setCaretPosition(input, pos) {
-                        if (!input) return;
-                        if (input.setSelectionRange) {
-                            input.focus();
-                            input.setSelectionRange(pos, pos);
-                        } else if (input.createTextRange) {
-                            var range = input.createTextRange();
-                            range.collapse(true);
-                            range.moveEnd('character', pos);
-                            range.moveStart('character', pos);
-                            range.select();
-                        }
-                    }
-
-                    // Event listener for input event
-                    priceInput.addEventListener('input', function(event) {
-                        let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
-                        let formattedValue = formatInputValue(value);
-
-                        // Get current caret position
-                        let caretPosition = event.target.selectionStart;
-
-                        // Update input value with formatted VNĐ value
-                        priceInput.value = formattedValue;
-
-                        // Set caret position back to where it was before formatting
-                        let newCaretPosition = caretPosition + (formattedValue.length - value.length);
-                        priceInput.setSelectionRange(newCaretPosition, newCaretPosition);
-                    });
-
-                    // Event listener for blur event
-                    priceInput.addEventListener('blur', function(event) {
-                        let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
-                        let formattedValue = formatInputValue(value);
-                        priceInput.value = formattedValue;
-                    });
-
-                    // Initialize input value on DOMContentLoaded
-                    document.addEventListener('DOMContentLoaded', function() {
-                        let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
-                        let formattedValue = formatInputValue(value);
-                        priceInput.value = formattedValue;
-                    });
-                </script>
-
-
-
-                <div>
+                <div class="col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Danh mục sản phẩm</label>
                     <div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                        style="max-height: 95px; overflow-y: auto;">
-                        <div class="flex items-center mb-2">
-                            <input type="checkbox" id="category-TV" name="category" value="TV" class="mr-2">
-                            <label for="category-TV">TV</label>
+                        style="max-height: 125px; overflow-y: auto;">
+                        <div class="grid grid-cols-2 gap-4 mb-2">
+                            <div class="flex items-center mb-2">
+                                <input type="checkbox" id="category-TV" name="category" value="TV" class="mr-2">
+                                <label for="category-TV">TV</label>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <input type="checkbox" id="category-PC" name="category" value="PC" class="mr-2">
+                                <label for="category-PC">Máy vi tính</label>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <input type="checkbox" id="category-GA" name="category" value="GA" class="mr-2">
+                                <label for="category-GA">Gaming/Máy chơi game</label>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <input type="checkbox" id="category-PH" name="category" value="PH" class="mr-2">
+                                <label for="category-PH">Điện thoại</label>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <input type="checkbox" id="category-PH" name="category" value="PH" class="mr-2">
+                                <label for="category-PH">Laptop</label>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <input type="checkbox" id="category-PH" name="category" value="PH" class="mr-2">
+                                <label for="category-PH">Phụ kiện</label>
+                            </div>
+                            <!-- Thêm các mục checkbox khác nếu cần -->
                         </div>
-                        <div class="flex items-center mb-2">
-                            <input type="checkbox" id="category-PC" name="category" value="PC" class="mr-2">
-                            <label for="category-PC">Máy vi tính</label>
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input type="checkbox" id="category-GA" name="category" value="GA" class="mr-2">
-                            <label for="category-GA">Gaming/Máy chơi game</label>
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input type="checkbox" id="category-PH" name="category" value="PH" class="mr-2">
-                            <label for="category-PH">Điện thoại</label>
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input type="checkbox" id="category-PH" name="category" value="PH" class="mr-2">
-                            <label for="category-PH">Laptop</label>
-                        </div>
-                        <div class="flex items-center mb-2">
-                            <input type="checkbox" id="category-PH" name="category" value="PH" class="mr-2">
-                            <label for="category-PH">Phụ kiện</label>
-                        </div>
-                        <!-- Thêm các mục checkbox khác nếu cần -->
                     </div>
                 </div>
 
-                <div >
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Danh mục sản phẩm</label>
+                <div class="col-span-2">
+                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mô tả sản
+                        phẩm</label>
+                    <textarea id="description" rows="4"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Mô tả..."></textarea>
+                </div>
 
-                    <div class="grid grid-cols-2 gap-4 mb-4 overflow-auto" style="max-height: 95px; overflow-y: auto;">
+                <div class="col-span-2">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mb-2">Chọn kho</label>
+
+                    <div class="grid grid-cols-2 gap-4 mb-2">
                         <!-- Kho 1 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 1</div>
+                        <div class="mb-4 mr-4">
+                            <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kho 1</div>
                             <input type="number" name="warehouse_quantity[kho1]" id="warehouse_quantity_kho1"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Số lượng" required>
                         </div>
-                    
+
                         <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                                        
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                                            
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
-                            <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Số lượng" required>
-                        </div>
-                    
-                        <!-- Kho 2 -->
-                        <div>
-                            <div class="font-medium text-gray-900 dark:text-white">Kho 2</div>
+                        <div class="mb-4">
+                            <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kho 2</div>
                             <input type="number" name="warehouse_quantity[kho2]" id="warehouse_quantity_kho2"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Số lượng" required>
                         </div>
 
+                        <!-- Kho 3 -->
+                        <div class="mb-4 mr-4">
+                            <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kho 3</div>
+                            <input type="number" name="warehouse_quantity[kho3]" id="warehouse_quantity_kho3"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
+
+                        <!-- Kho 4 -->
+                        <div class="mb-4">
+                            <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kho 4</div>
+                            <input type="number" name="warehouse_quantity[kho4]" id="warehouse_quantity_kho4"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Số lượng" required>
+                        </div>
                     </div>
                 </div>
-                
+
 
                 <div class="col-span-2">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mô tả
@@ -371,6 +223,81 @@
     <script src="https://unpkg.com/cropperjs/dist/cropper.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+    <script>
+        const priceInput = document.getElementById('price');
+
+        // Function to format input value to VNĐ without the currency symbol
+        function formatInputValue(value) {
+            // Check if value is empty or not a number
+            if (!value || isNaN(value)) {
+                return '';
+            }
+
+            // Format number to VNĐ format without the currency symbol
+            let formattedValue = new Intl.NumberFormat('vi-VN').format(value);
+            return formattedValue.replace(/\u200B/g, ''); // Remove zero-width space if present
+        }
+
+        // Function to get current caret position in input field
+        function getCaretPosition(input) {
+            if (!input) return 0;
+            if (input.selectionStart !== undefined) {
+                return input.selectionStart;
+            } else if (document.selection) {
+                input.focus();
+                var selection = document.selection.createRange();
+                selection.moveStart('character', -input.value.length);
+                return selection.text.length;
+            }
+            return 0;
+        }
+
+        // Function to set caret position in input field
+        function setCaretPosition(input, pos) {
+            if (!input) return;
+            if (input.setSelectionRange) {
+                input.focus();
+                input.setSelectionRange(pos, pos);
+            } else if (input.createTextRange) {
+                var range = input.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', pos);
+                range.moveStart('character', pos);
+                range.select();
+            }
+        }
+
+        // Event listener for input event
+        priceInput.addEventListener('input', function(event) {
+            let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            let formattedValue = formatInputValue(value);
+
+            // Get current caret position
+            let caretPosition = event.target.selectionStart;
+
+            // Update input value with formatted VNĐ value
+            priceInput.value = formattedValue;
+
+            // Set caret position back to where it was before formatting
+            let newCaretPosition = caretPosition + (formattedValue.length - value.length);
+            priceInput.setSelectionRange(newCaretPosition, newCaretPosition);
+        });
+
+        // Event listener for blur event
+        priceInput.addEventListener('blur', function(event) {
+            let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            let formattedValue = formatInputValue(value);
+            priceInput.value = formattedValue;
+        });
+
+        // Initialize input value on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            let formattedValue = formatInputValue(value);
+            priceInput.value = formattedValue;
+        });
+    </script>
 
     <script>
         // Lấy ra phần input số lượng
