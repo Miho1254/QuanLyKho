@@ -7,8 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sản phẩm</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+    <style>
+        .relative.z-0.inline-flex a:nth-child(n+6):nth-child(-n+8) {
+            display: none;
+        }
+    </style>
+    <style>
+        /* CSS tùy chỉnh cho thanh cuộn */
+        .overflow-auto::-webkit-scrollbar {
+            width: 6px;
+            /* Chiều rộng thanh cuộn */
+            height: 6px;
+            /* Chiều cao thanh cuộn */
+        }
 
+        .overflow-auto::-webkit-scrollbar-track {
+            background: #333;
+            /* Màu nền của track trong chủ đề tối */
+        }
+
+        .overflow-auto::-webkit-scrollbar-thumb {
+            background-color: #555;
+            /* Màu của thanh cuộn trong chủ đề tối */
+            border-radius: 3px;
+            /* Bo góc thành bo tròn */
+        }
+
+        .overflow-auto::-webkit-scrollbar-thumb:hover {
+            background-color: #777;
+            /* Màu của thanh cuộn khi hover trong chủ đề tối */
+        }
+    </style>
+</head>
 
 @extends('layouts.app')
 @section('content')
@@ -81,34 +111,6 @@
                             </div>
                         </div>
 
-                        <style>
-                            /* CSS tùy chỉnh cho thanh cuộn */
-                            .overflow-auto::-webkit-scrollbar {
-                                width: 6px;
-                                /* Chiều rộng thanh cuộn */
-                                height: 6px;
-                                /* Chiều cao thanh cuộn */
-                            }
-
-                            .overflow-auto::-webkit-scrollbar-track {
-                                background: #333;
-                                /* Màu nền của track trong chủ đề tối */
-                            }
-
-                            .overflow-auto::-webkit-scrollbar-thumb {
-                                background-color: #555;
-                                /* Màu của thanh cuộn trong chủ đề tối */
-                                border-radius: 3px;
-                                /* Bo góc thành bo tròn */
-                            }
-
-                            .overflow-auto::-webkit-scrollbar-thumb:hover {
-                                background-color: #777;
-                                /* Màu của thanh cuộn khi hover trong chủ đề tối */
-                            }
-                        </style>
-
-
                         <div class="overflow-auto" style="max-height: 600px">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                 <thead
@@ -173,7 +175,8 @@
                                             </td>
                                             <td class="px-6 py-4">
                                                 <a href="{{ route('products.edit', ['id' => $product->id]) }}"
-                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chỉnh Sửa</a>                                                
+                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chỉnh
+                                                    Sửa</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -207,13 +210,8 @@
                         </div> --}}
 
 
-                        {{-- <style>
-                            .relative.z-0.inline-flex a:nth-child(n+6):nth-child(-n+8) {
-                                display: none;
-                            }
-                        </style>
 
-                        <script>
+                        {{--  <script>
                             document.addEventListener('DOMContentLoaded', function() {
                                 const totalPages = 50;
                                 let currentPage = 1;
@@ -328,7 +326,6 @@
             </div>
 
         </div>
-    </div>
     </div>
 @endsection
 

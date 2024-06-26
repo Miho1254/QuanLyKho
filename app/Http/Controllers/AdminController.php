@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index() {
         // Hiển thị danh sách nhân viên
-        return view('admins.index');
+        $users = User::paginate(8);
+
+        // Chuyển dữ liệu tới view
+        return view('admins.index', compact('users'));
     }
 
     public function create() {

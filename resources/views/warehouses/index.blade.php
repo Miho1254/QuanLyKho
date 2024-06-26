@@ -11,7 +11,7 @@
     <style>
         /* CSS tùy chỉnh cho thanh cuộn */
         .overflow-auto::-webkit-scrollbar {
-            width: 6px;                 
+            width: 6px;
             /* Chiều rộng thanh cuộn */
             height: 6px;
             /* Chiều cao thanh cuộn */
@@ -36,11 +36,11 @@
     </style>
 
 
-<style>
-    .relative.z-0.inline-flex a:nth-child(n+6):nth-child(-n+8) {
-        display: none;
-    }
-</style>
+    <style>
+        .relative.z-0.inline-flex a:nth-child(n+6):nth-child(-n+8) {
+            display: none;
+        }
+    </style>
 
 
 </head>
@@ -120,7 +120,8 @@
 
                         <div class="overflow-auto" style="max-height: 600px">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <thead
+                                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="p-4">
                                             <div class="flex items-center">
@@ -131,13 +132,15 @@
                                         </th>
                                         <th scope="col" class="px-6 py-3">ID KHO</th>
                                         <th scope="col" class="px-6 py-3">MÃ KHO</th>
-                                        <th scope="col" class="px-16 py-3">VỊ TRÍ</th> <!-- Increased width for Position column -->
+                                        <th scope="col" class="px-16 py-3">VỊ TRÍ</th>
+                                        <!-- Increased width for Position column -->
                                         <th scope="col" class="px-12 py-3">DANH SÁCH SẢN PHẨM</th>
                                         <th scope="col" class="px-6 py-3">CHỈNH SỬA</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td class="px-4 py-4">
                                             <div class="flex items-center">
                                                 <input id="checkbox-table-search-1" type="checkbox"
@@ -147,15 +150,19 @@
                                         </td>
                                         <td class="px-6 py-4">123</td>
                                         <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td> <!-- Increased width for Position column -->
+                                        <td class="px-16 py-4">đường abc xyz</td>
+                                        <!-- Increased width for Position column -->
                                         <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
+                                            <a href="{{ route('warehouses.list_products') }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
+                                            <a href="{{ route('warehouses.edit', 1) }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td class="px-4 py-4">
                                             <div class="flex items-center">
                                                 <input id="checkbox-table-search-1" type="checkbox"
@@ -165,15 +172,19 @@
                                         </td>
                                         <td class="px-6 py-4">123</td>
                                         <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td> <!-- Increased width for Position column -->
+                                        <td class="px-16 py-4">đường abc xyz</td>
+                                        <!-- Increased width for Position column -->
                                         <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
+                                            <a href="{{ route('warehouses.list_products') }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
+                                            <a href="{{ route('warehouses.edit', 1) }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td class="px-4 py-4">
                                             <div class="flex items-center">
                                                 <input id="checkbox-table-search-1" type="checkbox"
@@ -183,15 +194,19 @@
                                         </td>
                                         <td class="px-6 py-4">123</td>
                                         <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td> <!-- Increased width for Position column -->
+                                        <td class="px-16 py-4">đường abc xyz</td>
+                                        <!-- Increased width for Position column -->
                                         <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
+                                            <a href="{{ route('warehouses.list_products') }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
+                                            <a href="{{ route('warehouses.edit', 1) }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td class="px-4 py-4">
                                             <div class="flex items-center">
                                                 <input id="checkbox-table-search-1" type="checkbox"
@@ -201,15 +216,19 @@
                                         </td>
                                         <td class="px-6 py-4">123</td>
                                         <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td> <!-- Increased width for Position column -->
+                                        <td class="px-16 py-4">đường abc xyz</td>
+                                        <!-- Increased width for Position column -->
                                         <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
+                                            <a href="{{ route('warehouses.list_products') }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
+                                            <a href="{{ route('warehouses.edit', 1) }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                         </td>
                                     </tr>
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                         <td class="px-4 py-4">
                                             <div class="flex items-center">
                                                 <input id="checkbox-table-search-1" type="checkbox"
@@ -219,18 +238,21 @@
                                         </td>
                                         <td class="px-6 py-4">123</td>
                                         <td class="px-6 py-4">Kho01</td>
-                                        <td class="px-16 py-4">đường abc xyz</td> <!-- Increased width for Position column -->
+                                        <td class="px-16 py-4">đường abc xyz</td>
+                                        <!-- Increased width for Position column -->
                                         <td class="px-12 py-4">
-                                            <a href="{{ route('warehouses.list_products') }}" class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
+                                            <a href="{{ route('warehouses.list_products') }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}" class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
+                                            <a href="{{ route('warehouses.edit', 1) }}"
+                                                class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                         </td>
                                     </tr>
 
                                 </tbody>
                             </table>
-                                                                                                                
+
                             <div class="flex justify-center mt-4">
                                 <div class="relative z-0 inline-flex h-12 rounded-md shadow-sm -space-x-px"
                                     aria-label="Pagination">
@@ -416,4 +438,5 @@
         </div>
     </div>
 @endsection
+
 </html>
