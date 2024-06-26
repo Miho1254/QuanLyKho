@@ -122,11 +122,9 @@
                                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
                                             </div>
-                                        <th scope="col" class="px-6 py-3">
-                                            Tên Sản Phẩm / hãng
                                         </th>
                                         <th scope="col" class="px-6 py-3">
-                                            Số Lượng
+                                            Tên Sản Phẩm / hãng
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             Giá
@@ -162,9 +160,6 @@
                                                         {{ $product->brand }}</div>
                                                 </div>
                                             </th>
-                                            <td class="px-6 py-4 Quantity">
-                                                {{ $product->quantity ?? 'N/A' }}
-                                            </td>
                                             <td class="px-6 py-4 font-bold price">
                                                 {{ number_format($product->price, 0, ',', '.') }}đ
                                             </td>
@@ -182,7 +177,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                                                    </div>
 
                         <!-- Pagination -->
                         <div class="flex justify-center mt-4">

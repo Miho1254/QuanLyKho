@@ -151,7 +151,7 @@
                                                 <img class="w-20 h-14 rounded -left-1 user-image"
                                                     src="{{ asset($user->image_path) }}" alt="{{ $user->name }} image">
                                                 <div class="ps-3">
-                                                    <div class="text-base font-semibold user">{{ $user->fullname }}</div>
+                                                    <div class="text-base font-semibold user-name">{{ $user->fullname }}</div>
                                                     <div class="font-normal text-gray-500 user-email">
                                                         {{ $user->email }}</div>
                                                 </div>
