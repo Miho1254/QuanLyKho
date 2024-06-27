@@ -208,9 +208,106 @@
             </div>
         </form>
     </div>
-
     <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.min.css">
     <script src="https://unpkg.com/cropperjs/dist/cropper.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropzoneFileInput = document.getElementById('dropzone-file');
+            const dropzoneContent = document.getElementById('dropzone-content');
+            const croppedImageContainer = document.getElementById('cropped-image');
+            const croppedImagePreview = document.getElementById('cropped-image-preview');
+            const cropperModal = document.getElementById('cropper-modal');
+            const cropperImage = document.getElementById('cropper-image');
+            const cropButtons = document.getElementById('crop-buttons');
+            let cropper;
+
+            dropzoneFileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    cropperImage.src = e.target.result;
+                    cropperModal.classList.remove('hidden');
+                    initializeCropper();
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+            function initializeCropper() {
+                cropper = new Cropper(cropperImage, {
+                    aspectRatio: 1,
+                    viewMode: 1,
+                });
+            }
+
+            document.getElementById('crop-image').addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default form submission action
+
+                // Get cropped image data
+                const canvas = cropper.getCroppedCanvas({
+                    width: 350,
+                    height: 350,
+                });
+
+                // Display cropped image
+                croppedImagePreview.src = canvas.toDataURL();
+                croppedImageContainer.classList.remove('hidden');
+
+                // Hide cropper modal
+                cropperModal.classList.add('hidden');
+
+                // Show crop buttons
+                cropButtons.classList.remove('hidden');
+
+                // Hide dropzone content
+                dropzoneContent.style.display = 'none';
+
+                // Destroy cropper instance
+                cropper.destroy();
+            });
+
+            document.getElementById('cancel-crop').addEventListener('click', function() {
+                cropper.destroy();
+                cropperModal.classList.add('hidden');
+            });
+
+            document.getElementById('change-image').addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default form submission action
+
+                // Reset the file input and related elements
+                dropzoneFileInput.value = '';
+                croppedImagePreview.src = '';
+                croppedImageContainer.classList.add('hidden');
+                cropButtons.classList.add('hidden');
+                dropzoneContent.style.display = 'flex';
+
+                // Destroy cropper instance if it exists
+                if (cropper) {
+                    cropper.destroy();
+                }
+            });
+
+            document.getElementById('delete-image').addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default form submission action
+
+                // Reset the file input and related elements
+                dropzoneFileInput.value = '';
+                croppedImagePreview.src = '';
+                croppedImageContainer.classList.add('hidden');
+                cropButtons.classList.add('hidden');
+                dropzoneContent.style.display = 'flex';
+
+                // Destroy cropper instance if it exists
+                if (cropper) {
+                    cropper.destroy();
+                }
+            });
+        });
+    </script>
+
     <script>
         let cropper;
 

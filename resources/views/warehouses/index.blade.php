@@ -158,7 +158,7 @@
                                                 class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a href="{{ route('warehouses.edit', 1) }}"
+                                            <a href="{{ route('warehouses.edit', $warehouse->id) }}"
                                                 class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                         </td>
                                     </tr>
@@ -174,7 +174,7 @@
                             </div>
 
                             <!-- Hộp thoại nhập trang -->
-                            <div id="page-input-dialog"
+                            {{-- <div id="page-input-dialog"
                                 class="hidden fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75">
                                 <div class="bg-white p-6 rounded-lg shadow-lg">
                                     <label for="page-number" class="block text-sm font-medium text-gray-700">Enter page
@@ -190,7 +190,7 @@
                                             class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Go</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                             {{-- <script>

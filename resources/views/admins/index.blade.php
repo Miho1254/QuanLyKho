@@ -38,9 +38,7 @@
             /* Màu của thanh cuộn khi hover trong chủ đề tối */
         }
     </style>
-
 </head>
-
 
 @extends('layouts.app')
 @section('content')
@@ -48,10 +46,9 @@
         <div class="" style="height: 60%; width: 100%;">
             <div class="" style="height: 100%; width: 100%; display: flex">
                 @include('layouts.sidebar')
-                <div class=" content w-full dark:bg-gray-900">
+                <div class="content w-full dark:bg-gray-900">
                     <div class="relative shadow-md sm:rounded-lg">
-                        <div
-                            class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white dark:bg-gray-900">
+                        <div class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white dark:bg-gray-900">
                             <div class="ml-5">
                                 <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction"
                                     class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -114,7 +111,6 @@
                             </div>
                         </div>
 
-
                         <div class="overflow-auto" style="max-height: 600px">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                 <thead
@@ -127,7 +123,8 @@
                                                 <label for="checkbox-all-search" class="sr-only">checkbox</label>
                                             </div>
                                         </th>
-                                        <th scope="col" class="px-6 py-3">Name</th>
+                                        <th scope="col" class="px-6 py-3">Full name</th>
+                                        <th scope="col" class="px-6 py-3">Name</th> <!-- Thêm cột User name -->
                                         <th scope="col" class="px-6 py-3">Position</th>
                                         <th scope="col" class="px-6 py-3">Created At</th>
                                         <th scope="col" class="px-6 py-3">Updated At</th>
@@ -156,6 +153,9 @@
                                                         {{ $user->email }}</div>
                                                 </div>
                                             </th>
+                                            <td class="px-6 py-4"> <!-- Thêm dữ liệu User name -->
+                                                {{ $user->name ?? 'N/A' }}
+                                            </td>
                                             <td class="px-6 py-4 POSITION">
                                                 {{ $user->role ?? 'N/A' }}
                                             </td>
@@ -174,7 +174,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -184,135 +183,6 @@
                             {{ $users->links() }}
                         </div>
 
-                        {{-- <!-- Hộp thoại nhập trang -->
-                            <div id="page-input-dialog"
-                                class="hidden fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-75">
-                                <div class="bg-white p-6 rounded-lg shadow-lg">
-                                    <label for="page-number" class="block text-sm font-medium text-gray-700">Enter page
-                                        number</label>
-                                    <div class="mt-1">
-                                        <input type="number" name="page-number" id="page-number"
-                                            class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    </div>
-                                    <div class="mt-4 flex justify-end">
-                                        <button id="page-input-cancel"
-                                            class="mr-2 inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Cancel</button>
-                                        <button id="page-input-go"
-                                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Go</button>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    const totalPages = 50;
-                                    let currentPage = 1;
-
-                                    const prevBtn = document.getElementById('prevBtn');
-                                    const nextBtn = document.getElementById('nextBtn');
-                                    let dotsShown = false; // Biến để theo dõi dấu ba chấm đã được hiển thị hay chưa
-                                    const pageInputDialog = document.getElementById('page-input-dialog');
-                                    const pageInputGo = document.getElementById('page-input-go');
-                                    const pageInputCancel = document.getElementById('page-input-cancel');
-                                    const pageNumberInput = document.getElementById('page-number');
-
-                                    // Function to generate pagination buttons
-                                    function generatePagination() {
-                                        let pages = '';
-
-                                        // Nút Previous
-                                        pages += `<a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">
-            <span class="sr-only">Previous</span>
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 18a1 1 0 01-.707-.293l-7-7a1 1 0 010-1.414l7-7a1 1 0 011.414 1.414L4.414 10H17a1 1 0 110 2H4.414l6.293 6.293A1 1 0 0110 18z" clip-rule="evenodd" />
-            </svg>
-        </a>`;
-
-                                        // Các nút số trang
-                                        for (let i = 1; i <= totalPages; i++) {
-                                            if (i <= 3 || i >= totalPages - 2) {
-                                                pages +=
-                                                    `<a href="#" class="page-number relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">${i}</a>`;
-                                            } else if (!dotsShown && (i === 4 || i === totalPages - 3)) {
-                                                pages +=
-                                                    `<span id="dotsBtn" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 cursor-pointer">...</span>`;
-                                                dotsShown = true; // Đánh dấu là đã hiển thị dấu ba chấm
-                                            } else if (dotsShown && (i === 4 || i === totalPages - 3)) {
-                                                // Không làm gì cả, để không hiển thị dấu ba chấm thứ hai
-                                            } else {
-                                                pages +=
-                                                    `<a href="#" class="page-number hidden relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">${i}</a>`;
-                                            }
-                                        }
-
-                                        // Nút Next
-                                        pages += `<a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-gray-700 text-sm font-medium text-gray-400 hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600">
-            <span class="sr-only">Next</span>
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fill-rule="evenodd" d="M10 2a1 1 0 01.707.293l7 7a1 1 0 01-1.414 1.414L15.586 10H3a1 1 0 110-2h12.586l-5.293-5.293A1 1 0 0110 2z" clip-rule="evenodd" />
-            </svg>
-        </a>`;
-
-                                        const pagination = document.querySelector('.relative.z-0.inline-flex');
-                                        pagination.innerHTML = pages;
-
-                                        // Add event listeners to new pagination buttons
-                                        const pageNumbers = document.querySelectorAll('.page-number');
-                                        pageNumbers.forEach((pageNumber) => {
-                                            pageNumber.addEventListener('click', function() {
-                                                currentPage = parseInt(pageNumber.textContent);
-                                                console.log('Go to page:', currentPage);
-                                                // Perform your page change action here (e.g., load new content)
-                                            });
-                                        });
-
-                                        prevBtn.addEventListener('click', function() {
-                                            if (currentPage > 1) {
-                                                currentPage--;
-                                                console.log('Go to page:', currentPage);
-                                                // Perform your page change action here (e.g., load new content)
-                                            }
-                                        });
-
-                                        nextBtn.addEventListener('click', function() {
-                                            if (currentPage < totalPages) {
-                                                currentPage++;
-                                                console.log('Go to page:', currentPage);
-                                                // Perform your page change action here (e.g., load new content)
-                                            }
-                                        });
-
-                                        const dotsBtn = document.getElementById('dotsBtn');
-                                        dotsBtn.addEventListener('click', function() {
-                                            if (!pageInputDialog.classList.contains('hidden')) {
-                                                pageInputDialog.classList.add('hidden');
-                                            } else {
-                                                pageInputDialog.classList.remove('hidden');
-                                            }
-                                        });
-
-                                        pageInputCancel.addEventListener('click', function() {
-                                            pageInputDialog.classList.add('hidden');
-                                        });
-
-                                        pageInputGo.addEventListener('click', function() {
-                                            const pageNumber = parseInt(pageNumberInput.value, 10);
-                                            if (pageNumber >= 1 && pageNumber <= totalPages) {
-                                                currentPage = pageNumber;
-                                                console.log('Go to page:', currentPage);
-                                                pageInputDialog.classList.add('hidden');
-                                                // Perform your page change action here (e.g., load new content)
-                                            } else {
-                                                alert('Invalid page number');
-                                            }
-                                        });
-                                    }
-
-                                    // Generate pagination on page load
-                                    generatePagination();
-                                });
-                            </script> --}}
                     </div>
                 </div>
             </div>

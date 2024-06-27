@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Warehouse; // Import model Warehouse
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class WarehouseController extends Controller
 {
@@ -28,12 +30,14 @@ class WarehouseController extends Controller
     {
         // Validate dữ liệu từ form
         $request->validate([
+            'id' => 'required|integer|unique:warehouses,id',
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
         ]);
 
         // Tạo mới một kho
         Warehouse::create([
+            'id' => $request->id,
             'name' => $request->name,
             'location' => $request->location,
         ]);
@@ -53,19 +57,25 @@ class WarehouseController extends Controller
     {
         // Validate dữ liệu từ form
         $request->validate([
+            'id' => 'required|integer|unique:warehouses,id,' . $id,
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
         ]);
+    
+        // Tìm và cập nhật kho
+        $warehouse = Warehouse::findOrFail($id);
+        $warehouse->update([
+            'id' => $request->id,
+            'name' => $request->name,
+            'location' => $request->location,
+        ]);
 
-        // Cập nhật thông tin kho
-        $warehouse = Warehouse::find($id);
-        $warehouse->name = $request->name;
-        $warehouse->location = $request->location;
-        $warehouse->save();
+        // Kiểm tra xem dữ liệu đã được cập nhật chưa
+        Log::info('Updated Warehouse: ' . $warehouse);
 
-        return redirect()->route('warehouses.index')->with('success', 'Đã cập nhật thông tin kho thành công.');
+        return redirect()->route('warehouses.index')->with('success', 'Đã cập nhật kho thành công.');
     }
-
+    
     // Phương thức xóa một kho khỏi cơ sở dữ liệu
     public function destroy($id)
     {
