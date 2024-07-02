@@ -11,6 +11,7 @@ class ProductsTableSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
+                'id' => 'SP001',
                 'name' => 'Product 1',
                 'description' => 'Description for Product 1',
                 'price' => 100.00,
@@ -20,6 +21,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP002',
                 'name' => 'Product 2',
                 'description' => 'Description for Product 2',
                 'price' => 200.00,
@@ -29,6 +31,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP003',
                 'name' => 'Product 3',
                 'description' => 'Description for Product 3',
                 'price' => 300.00,
@@ -38,6 +41,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP004',
                 'name' => 'Product 4',
                 'description' => 'Description for Product 4',
                 'price' => 400.00,
@@ -47,6 +51,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP005',
                 'name' => 'Product 5',
                 'description' => 'Description for Product 5',
                 'price' => 500.00,
@@ -56,6 +61,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP006',
                 'name' => 'Product 6',
                 'description' => 'Description for Product 6',
                 'price' => 600.00,
@@ -65,6 +71,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP007',
                 'name' => 'Product 7',
                 'description' => 'Description for Product 7',
                 'price' => 700.00,
@@ -74,6 +81,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP008',
                 'name' => 'Product 8',
                 'description' => 'Description for Product 8',
                 'price' => 800.00,
@@ -83,6 +91,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP009',
                 'name' => 'Product 9',
                 'description' => 'Description for Product 9',
                 'price' => 900.00,
@@ -92,6 +101,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP010',
                 'name' => 'Product 10',
                 'description' => 'Description for Product 10',
                 'price' => 1000.00,
@@ -101,6 +111,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP011',
                 'name' => 'Product 11',
                 'description' => 'Description for Product 11',
                 'price' => 1100.00,
@@ -110,6 +121,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP012',
                 'name' => 'Product 12',
                 'description' => 'Description for Product 12',
                 'price' => 1200.00,
@@ -119,6 +131,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP013',
                 'name' => 'Product 13',
                 'description' => 'Description for Product 13',
                 'price' => 1300.00,
@@ -128,6 +141,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP014',
                 'name' => 'Product 14',
                 'description' => 'Description for Product 14',
                 'price' => 1400.00,
@@ -137,6 +151,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP015',
                 'name' => 'Product 15',
                 'description' => 'Description for Product 15',
                 'price' => 1500.00,
@@ -146,6 +161,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP016',
                 'name' => 'Product 16',
                 'description' => 'Description for Product 16',
                 'price' => 1600.00,
@@ -155,6 +171,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP017',
                 'name' => 'Product 17',
                 'description' => 'Description for Product 17',
                 'price' => 1700.00,
@@ -164,6 +181,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP018',
                 'name' => 'Product 18',
                 'description' => 'Description for Product 18',
                 'price' => 1800.00,
@@ -173,6 +191,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP019',
                 'name' => 'Product 19',
                 'description' => 'Description for Product 19',
                 'price' => 1900.00,
@@ -182,6 +201,7 @@ class ProductsTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => 'SP020',
                 'name' => 'Product 20',
                 'description' => 'Description for Product 20',
                 'price' => 2000.00,

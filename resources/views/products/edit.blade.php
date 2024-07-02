@@ -14,28 +14,31 @@
 @section('content')
     <div class="flex h-full w-full mb-10">
         @include('layouts.sidebar')
-        <form action="#" class="w-full px-5">
+        <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data"
+            class="w-full px-5">
+            @csrf
+            @method('PUT')
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mã sản
+                    <label for="code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mã sản
                         phẩm</label>
-                    <input type="text" name="name" id="name"
+                    <input type="text" name="code" id="code" value="{{ $product->id }}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="" required="">
+                        required>
                 </div>
                 <div>
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tên sản
                         phẩm</label>
-                    <input type="text" name="name" id="name"
+                    <input type="text" name="name" id="name" value="{{ $product->name }}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="" required="">
+                        required>
                 </div>
                 <div>
                     <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Thương
                         hiệu</label>
-                    <input type="text" name="brand" id="brand"
+                    <input type="text" name="brand" id="brand" value="{{ $product->brand }}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="" required="">
+                        required>
                 </div>
                 <div>
                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Giá
@@ -44,15 +47,14 @@
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                             <span class="text-gray-500 sm:text-sm">₫</span>
                         </div>
-                        <input type="text" name="price" id="price"
+                        <input type="text" name="price" id="price" value="{{ number_format($product->price) }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 pl-7 pr-12 text-right dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="0" aria-describedby="price-currency">
+                            aria-describedby="price-currency" required>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                             <span class="text-gray-500 sm:text-sm" id="price-currency">VNĐ</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Danh mục sản phẩm</label>
                     <div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -90,11 +92,10 @@
                 <div class="col-span-2">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mô tả sản
                         phẩm</label>
-                    <textarea id="description" rows="4"
+                    <textarea id="description" name="description" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Mô tả..."></textarea>
+                        placeholder="Mô tả...">{{ $product->description }}</textarea>
                 </div>
-
                 <div class="col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mb-2">Chọn kho</label>
 
@@ -134,15 +135,16 @@
                 </div>
 
 
-                <div class="col-span-2">
-                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mô tả
-                        sản phẩm</label>
-                    <textarea id="description" rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Mô tả..."></textarea>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input class="form-control" name="image_path" type="file" id="image_path">
+                    @if ($product->image_path)
+                        <img src="{{ asset($product->image_path) }}" alt="Current Image" class="mt-2 w-32 h-32">
+                    @endif
                 </div>
 
-                <div class="col-span-1 flex flex-col items-center justify-center w-full">
+                {{-- Hình ảnh cắt với tỉ lệ 1:1 --}}
+
+                {{-- <div class="col-span-1 flex flex-col items-center justify-center w-full">
                     <label for="name" class="block mb-2 text-sx font-medium text-gray-900 dark:text-white">Hình
                         ảnh</label>
                     <div id="dropzone-container" class="flex items-center justify-center w-full">
@@ -189,7 +191,7 @@
                 </div>
 
                 <div id="cropped-result" class="col-span-1 flex items-center justify-center mt-4"
-                    style="height: 350px; width: 350px"></div>
+                    style="height: 350px; width: 350px"></div> --}}
             </div>
             <div class="flex justify-end">
                 <div class="flex items-center space-x-4">
@@ -203,8 +205,9 @@
                         </svg>
                         Lưu sản phẩm
                     </button>
-                    <button type="submit"
-                        class="text-red-500 inline-flex items-center border-2 border-red-500 hover:bg-red-600 hover:border-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-600 dark:hover:bg-red-700 dark:hover:border-red-700 dark:focus:ring-red-800">
+                    <button type="button"
+                        class="text-red-500 inline-flex items-center border-2 border-red-500 hover:bg-red-600 hover:border-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-600 dark:hover:bg-red-700 dark:hover:border-red-700 dark:focus:ring-red-800"
+                        onclick="confirmDelete()">
                         <svg class="mr-1 -ml-1 w-6 h-6 text-red-500 dark:text-red-600" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
@@ -215,9 +218,14 @@
                     </button>
                 </div>
             </div>
-
         </form>
     </div>
+    <form id="deleteForm" action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+    </div>
+
 
     <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.min.css">
     <script src="https://unpkg.com/cropperjs/dist/cropper.min.js"></script>
@@ -225,21 +233,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 
     <script>
+        function confirmDelete() {
+            if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+                document.getElementById('deleteForm').submit();
+            }
+        }
+    </script>
+
+
+    <script>
         const priceInput = document.getElementById('price');
 
-        // Function to format input value to VNĐ without the currency symbol
         function formatInputValue(value) {
-            // Check if value is empty or not a number
             if (!value || isNaN(value)) {
                 return '';
             }
 
-            // Format number to VNĐ format without the currency symbol
             let formattedValue = new Intl.NumberFormat('vi-VN').format(value);
-            return formattedValue.replace(/\u200B/g, ''); // Remove zero-width space if present
+            return formattedValue.replace(/\u200B/g, '');
         }
 
-        // Function to get current caret position in input field
         function getCaretPosition(input) {
             if (!input) return 0;
             if (input.selectionStart !== undefined) {
@@ -253,7 +266,6 @@
             return 0;
         }
 
-        // Function to set caret position in input field
         function setCaretPosition(input, pos) {
             if (!input) return;
             if (input.setSelectionRange) {
@@ -268,209 +280,196 @@
             }
         }
 
-        // Event listener for input event
         priceInput.addEventListener('input', function(event) {
-            let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            let value = priceInput.value.replace(/[^\d]/g, '');
             let formattedValue = formatInputValue(value);
-
-            // Get current caret position
             let caretPosition = event.target.selectionStart;
-
-            // Update input value with formatted VNĐ value
             priceInput.value = formattedValue;
-
-            // Set caret position back to where it was before formatting
             let newCaretPosition = caretPosition + (formattedValue.length - value.length);
             priceInput.setSelectionRange(newCaretPosition, newCaretPosition);
         });
 
-        // Event listener for blur event
         priceInput.addEventListener('blur', function(event) {
-            let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            let value = priceInput.value.replace(/[^\d]/g, '');
             let formattedValue = formatInputValue(value);
             priceInput.value = formattedValue;
         });
 
-        // Initialize input value on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', function() {
-            let value = priceInput.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
+            let value = priceInput.value.replace(/[^\d]/g, '');
             let formattedValue = formatInputValue(value);
             priceInput.value = formattedValue;
         });
     </script>
 
     <script>
-        // Lấy ra phần input số lượng
         const quantityInput = document.getElementById('quantity');
-
-        // Sử dụng event listener để ngăn chặn việc nhập ký tự không phải số
         quantityInput.addEventListener('input', function(event) {
-            // Lọc bỏ các ký tự không phải số
             let value = quantityInput.value.replace(/[^\d]/g, '');
-            // Cập nhật giá trị trong input
             quantityInput.value = value;
         });
     </script>
 
+    {{-- Hình ảnh cắt với tỉ lệ 1:1 --}}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropzoneFileInput = document.getElementById('dropzone-file');
-            const dropzoneContent = document.getElementById('dropzone-content');
-            const croppedImageContainer = document.getElementById('cropped-image');
-            const croppedImagePreview = document.getElementById('cropped-image-preview');
-            const cropperModal = document.getElementById('cropper-modal');
-            const cropperImage = document.getElementById('cropper-image');
-            const cropButtons = document.getElementById('crop-buttons');
-            let cropper;
-
-            dropzoneFileInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    cropperImage.src = e.target.result;
-                    cropperModal.classList.remove('hidden');
-                    initializeCropper();
-                };
-
-                reader.readAsDataURL(file);
-            });
-
-            function initializeCropper() {
-                cropper = new Cropper(cropperImage, {
-                    aspectRatio: 1,
-                    viewMode: 1,
-                });
-            }
-
-            document.getElementById('crop-image').addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default form submission action
-
-                // Get cropped image data
-                const canvas = cropper.getCroppedCanvas({
-                    width: 350,
-                    height: 350,
-                });
-
-                // Display cropped image
-                croppedImagePreview.src = canvas.toDataURL();
-                croppedImageContainer.classList.remove('hidden');
-
-                // Hide cropper modal
-                cropperModal.classList.add('hidden');
-
-                // Show crop buttons
-                cropButtons.classList.remove('hidden');
-
-                // Hide dropzone content
-                dropzoneContent.style.display = 'none';
-
-                // Destroy cropper instance
-                cropper.destroy();
-            });
-
-            document.getElementById('cancel-crop').addEventListener('click', function() {
-                cropper.destroy();
-                cropperModal.classList.add('hidden');
-            });
-
-            document.getElementById('change-image').addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default form submission action
-
-                // Reset the file input and related elements
-                dropzoneFileInput.value = '';
-                croppedImagePreview.src = '';
-                croppedImageContainer.classList.add('hidden');
-                cropButtons.classList.add('hidden');
-                dropzoneContent.style.display = 'flex';
-
-                // Destroy cropper instance if it exists
-                if (cropper) {
-                    cropper.destroy();
-                }
-            });
-
-            document.getElementById('delete-image').addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default form submission action
-
-                // Reset the file input and related elements
-                dropzoneFileInput.value = '';
-                croppedImagePreview.src = '';
-                croppedImageContainer.classList.add('hidden');
-                cropButtons.classList.add('hidden');
-                dropzoneContent.style.display = 'flex';
-
-                // Destroy cropper instance if it exists
-                if (cropper) {
-                    cropper.destroy();
-                }
-            });
-        });
-    </script>
-
-    <script>
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropzoneFileInput = document.getElementById('dropzone-file');
+        const dropzoneContent = document.getElementById('dropzone-content');
+        const croppedImageContainer = document.getElementById('cropped-image');
+        const croppedImagePreview = document.getElementById('cropped-image-preview');
+        const cropperModal = document.getElementById('cropper-modal');
+        const cropperImage = document.getElementById('cropper-image');
+        const cropButtons = document.getElementById('crop-buttons');
         let cropper;
 
-        document.getElementById('dropzone-file').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const imageElement = document.getElementById('selected-image');
-                    const dropzoneContainer = document.getElementById('dropzone-container');
-                    const cropButtons = document.getElementById('crop-buttons');
+        dropzoneFileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
 
-                    // Ẩn phần chọn ảnh
-                    dropzoneContainer.classList.add('hidden');
+            reader.onload = function(e) {
+                cropperImage.src = e.target.result;
+                cropperModal.classList.remove('hidden');
+                initializeCropper();
+            };
 
-                    // Hiển thị ảnh đã chọn
-                    imageElement.src = e.target.result;
-                    imageElement.classList.remove('hidden');
-                    cropButtons.classList.remove('hidden');
-
-                    // Khởi tạo Cropper.js
-                    if (cropper) {
-                        cropper.destroy();
-                    }
-                    cropper = new Cropper(imageElement, {
-                        aspectRatio: 1,
-                        viewMode: 1
-                    });
-                };
-                reader.readAsDataURL(file);
-            }
+            reader.readAsDataURL(file);
         });
 
-        document.getElementById('crop-image').addEventListener('click', function() {
-            const canvas = cropper.getCroppedCanvas();
-            const croppedResult = document.getElementById('cropped-result');
-            croppedResult.innerHTML =
-                `<img src="${canvas.toDataURL()}" class="max-w-full h-auto rounded-lg shadow-lg"/>`;
+        function initializeCropper() {
+            cropper = new Cropper(cropperImage, {
+                aspectRatio: 1,
+                viewMode: 1,
+            });
+        }
+
+        document.getElementById('crop-image').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default form submission action
+
+            // Get cropped image data
+            const canvas = cropper.getCroppedCanvas({
+                width: 350,
+                height: 350,
+            });
+
+            // Display cropped image
+            croppedImagePreview.src = canvas.toDataURL();
+            croppedImageContainer.classList.remove('hidden');
+
+            // Hide cropper modal
+            cropperModal.classList.add('hidden');
+
+            // Show crop buttons
+            cropButtons.classList.remove('hidden');
+
+            // Hide dropzone content
+            dropzoneContent.style.display = 'none';
+
+            // Destroy cropper instance
+            cropper.destroy();
         });
 
-        document.getElementById('change-image').addEventListener('click', function() {
-            document.getElementById('dropzone-file').value = '';
-            document.getElementById('dropzone-container').classList.remove('hidden');
-            document.getElementById('selected-image').classList.add('hidden');
-            document.getElementById('crop-buttons').classList.add('hidden');
-            document.getElementById('cropped-result').innerHTML = '';
+        document.getElementById('cancel-crop').addEventListener('click', function() {
+            cropper.destroy();
+            cropperModal.classList.add('hidden');
+        });
+
+        document.getElementById('change-image').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default form submission action
+
+            // Reset the file input and related elements
+            dropzoneFileInput.value = '';
+            croppedImagePreview.src = '';
+            croppedImageContainer.classList.add('hidden');
+            cropButtons.classList.add('hidden');
+            dropzoneContent.style.display = 'flex';
+
+            // Destroy cropper instance if it exists
             if (cropper) {
                 cropper.destroy();
             }
         });
 
-        document.getElementById('delete-image').addEventListener('click', function() {
-            document.getElementById('dropzone-file').value = '';
-            document.getElementById('dropzone-container').classList.remove('hidden');
-            document.getElementById('selected-image').classList.add('hidden');
-            document.getElementById('crop-buttons').classList.add('hidden');
-            document.getElementById('cropped-result').innerHTML = '';
+        document.getElementById('delete-image').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default form submission action
+
+            // Reset the file input and related elements
+            dropzoneFileInput.value = '';
+            croppedImagePreview.src = '';
+            croppedImageContainer.classList.add('hidden');
+            cropButtons.classList.add('hidden');
+            dropzoneContent.style.display = 'flex';
+
+            // Destroy cropper instance if it exists
             if (cropper) {
                 cropper.destroy();
             }
         });
-    </script>
+    });
+</script>
+
+<script>
+    let cropper;
+
+    document.getElementById('dropzone-file').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageElement = document.getElementById('selected-image');
+                const dropzoneContainer = document.getElementById('dropzone-container');
+                const cropButtons = document.getElementById('crop-buttons');
+
+                // Ẩn phần chọn ảnh
+                dropzoneContainer.classList.add('hidden');
+
+                // Hiển thị ảnh đã chọn
+                imageElement.src = e.target.result;
+                imageElement.classList.remove('hidden');
+                cropButtons.classList.remove('hidden');
+
+                // Khởi tạo Cropper.js
+                if (cropper) {
+                    cropper.destroy();
+                }
+                cropper = new Cropper(imageElement, {
+                    aspectRatio: 1,
+                    viewMode: 1
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('crop-image').addEventListener('click', function() {
+        const canvas = cropper.getCroppedCanvas();
+        const croppedResult = document.getElementById('cropped-result');
+        croppedResult.innerHTML =
+            `<img src="${canvas.toDataURL()}" class="max-w-full h-auto rounded-lg shadow-lg"/>`;
+    });
+
+    document.getElementById('change-image').addEventListener('click', function() {
+        document.getElementById('dropzone-file').value = '';
+        document.getElementById('dropzone-container').classList.remove('hidden');
+        document.getElementById('selected-image').classList.add('hidden');
+        document.getElementById('crop-buttons').classList.add('hidden');
+        document.getElementById('cropped-result').innerHTML = '';
+        if (cropper) {
+            cropper.destroy();
+        }
+    });
+
+    document.getElementById('delete-image').addEventListener('click', function() {
+        document.getElementById('dropzone-file').value = '';
+        document.getElementById('dropzone-container').classList.remove('hidden');
+        document.getElementById('selected-image').classList.add('hidden');
+        document.getElementById('crop-buttons').classList.add('hidden');
+        document.getElementById('cropped-result').innerHTML = '';
+        if (cropper) {
+            cropper.destroy();
+        }
+    });
+</script> --}}
 @endsection
 
 </html>

@@ -15,7 +15,7 @@ class CreateStorageManagementTables extends Migration
     {
         // Create products table
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->string('id', 60)->primary();
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
@@ -37,8 +37,7 @@ class CreateStorageManagementTables extends Migration
 
         // Create pivot table for many-to-many relationship between products and categories
         Schema::create('category_product', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
             $table->charset = 'utf8mb4';
@@ -46,9 +45,9 @@ class CreateStorageManagementTables extends Migration
         });
 
         // Create inventory table
+        // Create inventory table
         Schema::create('inventory', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->integer('quantity');
             $table->timestamps();
             $table->charset = 'utf8mb4';
@@ -58,7 +57,7 @@ class CreateStorageManagementTables extends Migration
         // Create transactions table
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->enum('type', ['import', 'export']);
             $table->integer('quantity');
             $table->timestamps();
@@ -70,10 +69,10 @@ class CreateStorageManagementTables extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-	        $table->string('email')->unique();
-	        $table->string('fullname')->nullable();
-	        $table->string('password');
-	        $table->string('image_path')->nullable();
+            $table->string('email')->unique();
+            $table->string('fullname')->nullable();
+            $table->string('password');
+            $table->string('image_path')->nullable();
             $table->enum('role', ['admin', 'user']);
             $table->rememberToken();
             $table->timestamps();
@@ -120,11 +119,11 @@ class CreateStorageManagementTables extends Migration
             $table->collation = 'utf8mb4_unicode_ci';
         });
 
-        // Create warehouse inventory table
+        // Create warehouse_inventory table
         Schema::create('warehouse_inventory', function (Blueprint $table) {
             $table->id();
             $table->foreignId('warehouse_id')->constrained('warehouses')->onDelete('cascade');
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->integer('quantity');
             $table->timestamps();
             $table->charset = 'utf8mb4';
