@@ -21,7 +21,7 @@
         <div class="" style="height: 60%; width: 100%;">
             <div class="" style="height: 100%; width: 100%; display: flex">
                 @include('layouts.sidebar')
-                <div class="content w-full dark:bg-gray-900" style="height: 666px;">
+                <div class="content w-full dark:bg-gray-900" style="min-height: 666px;">
                     <div class="relative shadow-md sm:rounded-lg" style="height: 100%;">
 
                         <div class="max-w mx-autop-8 rounded shadow" style="height: 100%;">

@@ -9,54 +9,58 @@ use Illuminate\Http\Request;
 
 class ImportController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         // Hiển thị danh sách phiếu nhập kho
         $imports = Transaction::paginate(8); // Phân trang với mỗi trang 10 bản ghi
-    
+
         return view('imports.index', ['imports' => $imports]);
     }
 
-    public function create() {
-        $products = Product::all(); // Giả sử bạn có model Product để lấy danh sách sản phẩm
-        $warehouses = Warehouse::all(); // Lấy danh sách kho hàng từ model Warehouse
+   public function create()
+   {
+       $warehouses = Warehouse::all(); // Lấy danh sách kho hàng
+       $products = Product::all(); // Lấy danh sách sản phẩm
+       return view('imports.create', compact('warehouses', 'products'));
+   }
 
-        return view('imports.create', compact('products', 'warehouses'));
-                // Hiển thị form tạo phiếu nhập kho mới
-    }
-
+    /**
+     * Lưu phiếu nhập kho vào CSDL.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
-    // Validate incoming request
-    $request->validate([
-        'id' => 'required|string|max:255', // Thêm các quy định validation cho các trường khác nếu cần thiết
-        'products' => 'required|array|min:1', // Đảm bảo danh sách sản phẩm không được rỗng và là một mảng
-        'products.*.id' => 'required|exists:products,id', // Đảm bảo mỗi sản phẩm có tồn tại trong bảng products
-        'products.*.quantity' => 'required|integer|min:1', // Đảm bảo số lượng sản phẩm là số nguyên dương
-    ]);
+        // Validate form data
+        $request->validate([
+            'receipt_id' => 'required|string',
+            'warehouse_id' => 'required|exists:warehouses,id',
+            'products' => 'required|array|min:1',
+            'products.*.product_id' => 'required|string|exists:products,id',
+            'products.*.quantity' => 'required|integer|min:1',
+        ]);
 
-    // Tạo phiếu nhập kho mới
-    $transaction = new Transaction();
-    $transaction->type = 'import'; // Loại giao dịch là nhập kho
-    $transaction->id = $request->input('id');
-    $transaction->save();
+        // Create transactions for each product
+        foreach ($request->products as $product) {
+            Transaction::create([
+                'product_id' => $product['product_id'],
+                'quantity' => $product['quantity'],
+                'type' => 'import', // Loại giao dịch nhập kho
+                // Có thể thêm các trường khác nếu cần
+            ]);
+        }
 
-    // Lưu chi tiết các sản phẩm được nhập vào phiếu nhập kho
-    foreach ($request->input('products') as $product) {
-        // Tạo một mảng để lưu thông tin sản phẩm vào bản ghi transaction
-        $transaction->product_id = $product['id'];
-        $transaction->quantity = $product['quantity'];
-        $transaction->save();
+        return redirect()->back()->with('success', 'Phiếu nhập kho đã được tạo thành công.');
     }
 
-    // Redirect về trang tạo phiếu nhập kho với thông báo thành công
-    return redirect()->back()->with('success', 'Đã tạo phiếu nhập kho thành công.');
-    }
-    
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         // Cập nhật phiếu nhập kho vào database
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         // Xóa phiếu nhập kho
     }
 }
