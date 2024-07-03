@@ -14,7 +14,7 @@ class WarehouseController extends Controller
     public function index()
     {
         // Lấy danh sách các kho với phân trang
-        $warehouses = Warehouse::paginate(10); // Phân trang với mỗi trang 10 bản ghi
+        $warehouses = Warehouse::paginate(8); // Phân trang với mỗi trang 10 bản ghi
     
         return view('warehouses.index', ['warehouses' => $warehouses]);
     }
