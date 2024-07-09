@@ -138,9 +138,9 @@
                                         </td>
                                         <td class="px-6 py-4 border-b dark:border-gray-600">{{ $import->id }}</td>
                                         <td class="px-6 py-4 border-b dark:border-gray-600" data-timestamp="9876543210">
-                                            {{ $import->id }}</td>
+                                            {{ $import->created_at }}</td>
                                         <td class="px-6 py-4 border-b dark:border-gray-600" data-timestamp="1623456789">
-                                            {{ $import->id }}</td>
+                                            {{ $import->updated_at }}</td>
                                     </tr>
                             </tbody>
                             @endforeach

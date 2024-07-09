@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class,
             CategoryProductTableSeeder::class,
             InventoryTableSeeder::class,
+            WarehousesTableSeeder::class,
+            WarehouseInventoryTableSeeder::class,
             TransactionsTableSeeder::class,
             BackupsTableSeeder::class,
             ApiConnectionsTableSeeder::class,
             ExcelExportsTableSeeder::class,
-            WarehousesTableSeeder::class,
-            WarehouseInventoryTableSeeder::class,
         ]);
     }
 }

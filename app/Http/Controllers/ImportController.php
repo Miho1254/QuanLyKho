@@ -6,61 +6,90 @@ use App\Models\Transaction;
 use App\Models\Warehouse;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ImportController extends Controller
 {
     public function index()
     {
-        // Hiển thị danh sách phiếu nhập kho
-        $imports = Transaction::paginate(8); // Phân trang với mỗi trang 10 bản ghi
-
+        $imports = Transaction::where('type', 'import')->paginate(8);
         return view('imports.index', ['imports' => $imports]);
     }
 
-   public function create()
-   {
-       $warehouses = Warehouse::all(); // Lấy danh sách kho hàng
-       $products = Product::all(); // Lấy danh sách sản phẩm
-       return view('imports.create', compact('warehouses', 'products'));
-   }
-
-    /**
-     * Lưu phiếu nhập kho vào CSDL.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(Request $request)
+    public function create()
     {
-        // Validate form data
-        $request->validate([
-            'receipt_id' => 'required|string',
-            'warehouse_id' => 'required|exists:warehouses,id',
-            'products' => 'required|array|min:1',
-            'products.*.product_id' => 'required|string|exists:products,id',
-            'products.*.quantity' => 'required|integer|min:1',
-        ]);
-
-        // Create transactions for each product
-        foreach ($request->products as $product) {
-            Transaction::create([
-                'product_id' => $product['product_id'],
-                'quantity' => $product['quantity'],
-                'type' => 'import', // Loại giao dịch nhập kho
-                // Có thể thêm các trường khác nếu cần
-            ]);
-        }
-
-        return redirect()->back()->with('success', 'Phiếu nhập kho đã được tạo thành công.');
+        $warehouses = Warehouse::all();
+        $products = Product::all();
+        return view('imports.create', compact('warehouses', 'products'));
     }
 
+    public function store(Request $request)
+    {
+        // Để kiểm tra dữ liệu gửi từ form
+        //dd("a");
+
+        // Validate request data
+        $validatedData = $request->validate([
+            'id' => 'required|unique:transactions',
+            'warehouse_id' => 'required|exists:warehouses,id',
+            'products' => 'required|json'
+        ]);
+        Log::debug("start");
+
+        $products = json_decode($validatedData['products'], true);
+        Log::debug(" products");
+        Log::debug($products);
+
+        DB::beginTransaction();
+        Log::debug("DB");
+
+        try {
+            // Tạo một giao dịch mới
+            $transaction = new Transaction();
+            $transaction->id = $validatedData['id'];
+            $transaction->warehouse_id = $validatedData['warehouse_id'];
+            $transaction->type = 'import';
+            $transaction->save();
+            Log::debug("running 1");
+
+            // Lặp qua mỗi sản phẩm trong danh sách
+            foreach ($products as $product) {
+                Log::debug("start foreach");
+
+                DB::table('transactions_inventory')->insert([
+                    'transaction_id' => $transaction->id,
+                    'product_id' => $product['id'],
+                    'quantity' => $product['quantity']
+                ]);
+                Log::debug("end foreach");
+            }
+            Log::debug("DB");
+
+            DB::commit();
+            Log::debug("running 2");
+
+            return redirect()->route('imports.index')->with('success', 'Phiếu nhập kho đã được tạo thành công.');
+            Log::debug("running 3");
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::debug("running 3.5");
+        }
+        Log::debug("running 4");
+    }
     public function update(Request $request, $id)
     {
-        // Cập nhật phiếu nhập kho vào database
     }
 
     public function destroy($id)
     {
-        // Xóa phiếu nhập kho
+        // Find the import transaction
+        $import = Transaction::findOrFail($id);
+
+        // Delete the import transaction and related products
+        Transaction::where('id', $import->id)->where('type', 'import')->delete();
+
+        // Redirect after successful deletion
+        return redirect()->route('imports.index')->with('success', 'Import receipt deleted successfully.');
     }
 }

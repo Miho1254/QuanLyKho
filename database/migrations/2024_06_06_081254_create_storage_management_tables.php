@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateStorageManagementTables extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         // Create products table
@@ -28,7 +23,7 @@ class CreateStorageManagementTables extends Migration
 
         // Create categories table
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
+            $table->string('id', 60)->primary();
             $table->string('name');
             $table->timestamps();
             $table->charset = 'utf8mb4';
@@ -45,8 +40,28 @@ class CreateStorageManagementTables extends Migration
         });
 
         // Create inventory table
-        // Create inventory table
         Schema::create('inventory', function (Blueprint $table) {
+            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
+            $table->integer('quantity');
+            $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+        });
+
+        // Create warehouses table
+        Schema::create('warehouses', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('location');
+            $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+        });
+
+        // Create warehouse_inventory table
+        Schema::create('warehouse_inventory', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('warehouse_id')->constrained('warehouses')->onDelete('cascade');
             $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->integer('quantity');
             $table->timestamps();
@@ -59,6 +74,18 @@ class CreateStorageManagementTables extends Migration
             $table->id();
             $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->enum('type', ['import', 'export']);
+            $table->integer('quantity');
+            $table->foreignId('warehouse_id')->constrained('warehouses')->onDelete('cascade');
+            $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+        });
+
+        // Create transactions_inventory table
+        Schema::create('transactions_inventory', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('transaction_id')->constrained('transactions')->onDelete('cascade');
+            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->integer('quantity');
             $table->timestamps();
             $table->charset = 'utf8mb4';
@@ -108,36 +135,11 @@ class CreateStorageManagementTables extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
         });
-
-        // Create warehouses table
-        Schema::create('warehouses', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('location');
-            $table->timestamps();
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
-        });
-
-        // Create warehouse_inventory table
-        Schema::create('warehouse_inventory', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('warehouse_id')->constrained('warehouses')->onDelete('cascade');
-            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
-            $table->integer('quantity');
-            $table->timestamps();
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
-        });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
+        Schema::dropIfExists('transactions_inventory');
         Schema::dropIfExists('warehouse_inventory');
         Schema::dropIfExists('warehouses');
         Schema::dropIfExists('excel_exports');
