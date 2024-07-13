@@ -121,6 +121,7 @@
                                         </div>
                                     </th>
                                     <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">ID</th>
+                                    <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">Kho hàng</th>
                                     <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">Nhập lúc</th>
                                     <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">Cập nhật lúc</th>
                                 </tr>
@@ -137,6 +138,8 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 border-b dark:border-gray-600">{{ $import->id }}</td>
+                                        <td class="px-6 py-4 border-b dark:border-gray-600">{{ $import->warehouse->name }}</td>
+
                                         <td class="px-6 py-4 border-b dark:border-gray-600" data-timestamp="9876543210">
                                             {{ $import->created_at }}</td>
                                         <td class="px-6 py-4 border-b dark:border-gray-600" data-timestamp="1623456789">

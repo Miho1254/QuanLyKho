@@ -9,11 +9,12 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'warehouse_id', 'product_id', 'type', 'quantity'];
+    protected $fillable = ['id', 'warehouse_id', 'type'];
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class, 'transactions_inventory')
+                    ->withPivot('quantity');
     }
 
     public function warehouse()

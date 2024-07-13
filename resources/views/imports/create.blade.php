@@ -145,17 +145,33 @@
                     const productName = document.getElementById('product_id').selectedOptions[0].text;
                     const productQuantity = document.getElementById('product_quantity').value;
 
+                    // Reset product selection and quantity input
+                    document.getElementById('product_id').value = '';
+                    document.getElementById('product_quantity').value = '';
+
+                    // Check if the product already exists in the table
+                    const productExists = Array.from(productTable.rows).some(row => {
+                        return row.cells[0].textContent.trim() === productId;
+                    });
+
+                    if (productExists) {
+                        alert(
+                            'Sản phẩm đã tồn tại trong danh sách. Vui lòng chọn sản phẩm khác hoặc chỉnh sửa số lượng.');
+                        return;
+                    }
+
                     if (productId && productQuantity) {
                         const row = document.createElement('tr');
 
                         row.innerHTML = `
-                        <td class="px-6 py-4 border-b dark:border-gray-600">${productId}</td>
-                        <td class="px-6 py-4 border-b dark:border-gray-600">${productName}</td>
-                        <td class="px-6 py-4 border-b dark:border-gray-600">${productQuantity}</td>
-                        <td class="px-6 py-4 border-b dark:border-gray-600">
-                            <button type="button" class="text-red-600 hover:text-red-900 delete-product">Xóa</button>
-                        </td>
-                    `;
+            <td class="px-6 py-4 border-b dark:border-gray-600">${productId}</td>
+            <td class="px-6 py-4 border-b dark:border-gray-600">${productName}</td>
+            <td class="px-6 py-4 border-b dark:border-gray-600">${productQuantity}</td>
+            <td class="px-6 py-4 border-b dark:border-gray-600">
+                <button type="button" class="text-blue-600 hover:text-blue-900 edit-product">Sửa</button>
+                <button type="button" class="text-red-600 hover:text-red-900 delete-product ml-2">Xóa</button>
+            </td>
+        `;
 
                         productTable.appendChild(row);
 
@@ -163,6 +179,27 @@
                         deleteButtons.forEach(button => {
                             button.addEventListener('click', function() {
                                 this.closest('tr').remove();
+                                updateProductsInput();
+                            });
+                        });
+
+                        const editButtons = document.querySelectorAll('.edit-product');
+                        editButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                const currentRow = this.closest('tr');
+                                const cells = currentRow.querySelectorAll('td');
+
+                                // Retrieve product ID and quantity for editing
+                                const productId = cells[0].textContent.trim();
+                                const productQuantity = cells[2].textContent.trim();
+
+                                // Pre-fill form fields or open a modal for editing
+                                document.getElementById('product_id').value = productId;
+                                document.getElementById('product_quantity').value =
+                                    productQuantity;
+
+                                // Remove the edited row from the table
+                                currentRow.remove();
                                 updateProductsInput();
                             });
                         });

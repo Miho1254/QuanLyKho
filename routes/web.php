@@ -48,6 +48,7 @@ Route::middleware(['web'])->group(function () {
         Route::put('/{id}', [ExportController::class, 'update'])->name('exports.update');
         Route::delete('/{id}', [ExportController::class, 'destroy'])->name('exports.destroy');
     });
+    Route::get('/exports/warehouse/{id}/products', [ExportController::class, 'getProductsByWarehouse']);
 
     Route::get('/analyse', [AnalyseController::class, 'index'])->name('analyse.index');
 

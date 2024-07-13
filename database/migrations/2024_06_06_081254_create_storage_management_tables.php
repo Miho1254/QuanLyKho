@@ -23,7 +23,7 @@ class CreateStorageManagementTables extends Migration
 
         // Create categories table
         Schema::create('categories', function (Blueprint $table) {
-            $table->string('id', 60)->primary();
+            $table->id();
             $table->string('name');
             $table->timestamps();
             $table->charset = 'utf8mb4';
@@ -72,15 +72,13 @@ class CreateStorageManagementTables extends Migration
         // Create transactions table
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
             $table->enum('type', ['import', 'export']);
-            $table->integer('quantity');
             $table->foreignId('warehouse_id')->constrained('warehouses')->onDelete('cascade');
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
         });
-
+        
         // Create transactions_inventory table
         Schema::create('transactions_inventory', function (Blueprint $table) {
             $table->id();

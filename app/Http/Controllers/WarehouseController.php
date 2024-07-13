@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Warehouse; // Import model Warehouse
+use App\Models\Product;
+use App\Models\WarehouseInventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 
 class WarehouseController extends Controller
@@ -88,9 +91,27 @@ class WarehouseController extends Controller
     {
         // Lấy danh sách các kho và số lượng sản phẩm trong mỗi kho
         // $warehouses = Warehouse::all();
-        $warehouses = Warehouse::paginate(10); // Phân trang với mỗi trang 10 bản ghi
+        $warehouses = Warehouse::all(); // Fetch all warehouses
 
+        // Optionally, fetch products for the first warehouse as default
+        $products = DB::table('warehouse_inventory')
+                      ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
+                      ->where('warehouse_id', $warehouses->first()->id ?? null)
+                      ->select('products.*', 'warehouse_inventory.quantity')
+                      ->get();
+    
+    
 
         return view('warehouses.list_products', ['warehouses' => $warehouses]);
     }
+    public function getProductsByWarehouse($warehouseId)
+{
+    $products = DB::table('warehouse_inventory')
+        ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
+        ->where('warehouse_inventory.warehouse_id', $warehouseId)
+        ->select('products.id', 'products.name')
+        ->get();
+
+    return response()->json($products);
+}
 }

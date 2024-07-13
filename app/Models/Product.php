@@ -43,12 +43,13 @@ class Product extends Model
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->belongsToMany(Transaction::class, 'product_transaction')
+                    ->withPivot('quantity');
     }
 
     public function warehouseInventory()
     {
-        return $this->hasMany(WarehouseInventory::class);
+        return $this->hasMany(WarehouseInventory::class, 'product_id');
     }
     
 }

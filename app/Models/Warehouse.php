@@ -13,7 +13,7 @@ class Warehouse extends Model
     
     public function warehouseInventory()
     {
-        return $this->hasMany(WarehouseInventory::class);
+        return $this->hasMany(WarehouseInventory::class, 'warehouse_id');
     }
     
 }
