@@ -10,6 +10,13 @@ class Warehouse extends Model
     use HasFactory;
 
     protected $fillable = ['id', 'name', 'location'];
+
+// Warehouse.php
+public function products()
+{
+    return $this->belongsToMany(Product::class, 'warehouse_inventory')
+                ->withPivot('quantity');
+}
     
     public function warehouseInventory()
     {

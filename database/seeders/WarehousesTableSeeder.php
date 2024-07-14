@@ -12,7 +12,12 @@ class WarehousesTableSeeder extends Seeder
         DB::table('warehouses')->insert([
             ['name' => 'Warehouse 1', 'location' => 'Location 1', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Warehouse 2', 'location' => 'Location 2', 'created_at' => now(), 'updated_at' => now()],
-            // Add more warehouses as needed
+            ['name' => 'Warehouse 3', 'location' => 'Location 3', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Warehouse 4', 'location' => 'Location 4', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Warehouse 5', 'location' => 'Location 5', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Warehouse 6', 'location' => 'Location 6', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Warehouse 7', 'location' => 'Location 7', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Warehouse 8', 'location' => 'Location 8', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

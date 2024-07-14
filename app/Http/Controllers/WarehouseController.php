@@ -18,10 +18,10 @@ class WarehouseController extends Controller
     {
         // Lấy danh sách các kho với phân trang
         $warehouses = Warehouse::paginate(8); // Phân trang với mỗi trang 10 bản ghi
-    
+
         return view('warehouses.index', ['warehouses' => $warehouses]);
     }
-    
+
     // Phương thức hiển thị form tạo mới kho
     public function create()
     {
@@ -64,7 +64,7 @@ class WarehouseController extends Controller
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
         ]);
-    
+
         // Tìm và cập nhật kho
         $warehouse = Warehouse::findOrFail($id);
         $warehouse->update([
@@ -78,7 +78,7 @@ class WarehouseController extends Controller
 
         return redirect()->route('warehouses.index')->with('success', 'Đã cập nhật kho thành công.');
     }
-    
+
     // Phương thức xóa một kho khỏi cơ sở dữ liệu
     public function destroy($id)
     {
@@ -87,31 +87,32 @@ class WarehouseController extends Controller
     }
 
     // Phương thức hiển thị số lượng sản phẩm của mỗi kho
-    public function listProductsInWarehouse()
+    public function listProductsInWarehouse($id)
     {
-        // Lấy danh sách các kho và số lượng sản phẩm trong mỗi kho
-        // $warehouses = Warehouse::all();
-        $warehouses = Warehouse::all(); // Fetch all warehouses
-
-        // Optionally, fetch products for the first warehouse as default
+        // Fetch the warehouse by ID
+        $warehouse = Warehouse::findOrFail($id);
+        
+        // Fetch products for the given warehouse
         $products = DB::table('warehouse_inventory')
-                      ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
-                      ->where('warehouse_id', $warehouses->first()->id ?? null)
-                      ->select('products.*', 'warehouse_inventory.quantity')
-                      ->get();
-    
-    
-
-        return view('warehouses.list_products', ['warehouses' => $warehouses]);
+            ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
+            ->where('warehouse_inventory.warehouse_id', $id)
+            ->select('products.id', 'products.name', 'products.brand', 'products.image_path', 'warehouse_inventory.quantity', 'products.price')
+            ->get();
+        
+        return view('warehouses.list_products', [
+            'warehouse' => $warehouse,
+            'products' => $products,
+        ]);
     }
+    
     public function getProductsByWarehouse($warehouseId)
-{
-    $products = DB::table('warehouse_inventory')
-        ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
-        ->where('warehouse_inventory.warehouse_id', $warehouseId)
-        ->select('products.id', 'products.name')
-        ->get();
+    {
+        $products = DB::table('warehouse_inventory')
+            ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
+            ->where('warehouse_inventory.warehouse_id', $warehouseId)
+            ->select('products.id', 'products.name')
+            ->get();
 
-    return response()->json($products);
-}
+        return response()->json($products);
+    }
 }

@@ -154,10 +154,10 @@
                                             <td class="px-16 py-4">{{ $warehouse->location }}</td>
                                             <!-- Increased width for Position column -->
                                             <td class="px-12 py-4">
-                                                <a href="{{ route('warehouses.list_products') }}"
+                                                <a href="{{ route('warehouses.list_products', ['id' => $warehouse->id]) }}"
                                                     class="text-blue-600 dark:text-blue-400 hover:underline">Sản phẩm</a>
                                             </td>
-                                            <td class="px-6 py-4">
+                                                                                        <td class="px-6 py-4">
                                                 <a href="{{ route('warehouses.edit', $warehouse->id) }}"
                                                     class="text-blue-600 dark:text-blue-400 hover:underline">Chỉnh sửa</a>
                                             </td>

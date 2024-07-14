@@ -32,7 +32,7 @@ class ExportController extends Controller
             'warehouse_id' => 'required|integer',
             'products' => 'required|json',
         ]);
-    
+
         // Tạo mới một transaction với id được cung cấp từ form
         $transaction = new Transaction([
             'id' => $validated['id'],
@@ -40,9 +40,9 @@ class ExportController extends Controller
             'type' => 'export',
         ]);
         $transaction->save();
-    
+
         $products = json_decode($validated['products'], true);
-    
+
         foreach ($products as $product) {
             // Kiểm tra nếu key 'product_id' tồn tại trong mảng $product
             if (isset($product['product_id'])) {
@@ -52,7 +52,7 @@ class ExportController extends Controller
                     'product_id' => $product['product_id'],
                     'quantity' => $product['quantity'],
                 ]);
-    
+
                 // Trừ số lượng sản phẩm trong warehouse_inventory
                 DB::table('warehouse_inventory')
                     ->where('warehouse_id', $validated['warehouse_id'])
@@ -63,10 +63,10 @@ class ExportController extends Controller
                 Log::error('Product array missing key product_id', $product);
             }
         }
-    
-        return redirect()->route('imports.index')->with('success', 'Phiếu xuất kho đã được tạo thành công.');
+
+        return redirect()->route('exports.index')->with('success', 'Phiếu xuất kho đã được tạo thành công.');
     }
-            
+
     public function update(Request $request, $id)
     {
     }
@@ -85,14 +85,13 @@ class ExportController extends Controller
     public function getProductsByWarehouse($id)
     {
         $products = DB::table('warehouse_inventory')
-                      ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
-                      ->where('warehouse_inventory.warehouse_id', $id)
-                      ->select('products.*', 'warehouse_inventory.quantity')
-                      ->get();
-    
+            ->join('products', 'warehouse_inventory.product_id', '=', 'products.id')
+            ->where('warehouse_inventory.warehouse_id', $id)
+            ->select('products.*', 'warehouse_inventory.quantity')
+            ->get();
+
         Log::info('Products fetched for warehouse ID ' . $id . ': ', $products->toArray());
-    
+
         return response()->json($products);
     }
-
 }

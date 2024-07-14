@@ -176,7 +176,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                                                    </div>
+                        </div>
 
                         <!-- Pagination -->
                         <div class="flex justify-center mt-4">
@@ -186,7 +186,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

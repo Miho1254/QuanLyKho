@@ -68,6 +68,6 @@ Route::middleware(['web'])->group(function () {
         Route::get('/{id}/edit', [WarehouseController::class, 'edit'])->name('warehouses.edit');
         Route::put('/{id}', [WarehouseController::class, 'update'])->name('warehouses.update');
         Route::delete('/{id}', [WarehouseController::class, 'destroy'])->name('warehouses.destroy');
-        Route::get('/list-products', [WarehouseController::class, 'listProductsInWarehouse'])->name('warehouses.list_products');
+        Route::get('warehouses/{id}/products', [WarehouseController::class, 'listProductsInWarehouse'])->name('warehouses.list_products');
     });    
 });

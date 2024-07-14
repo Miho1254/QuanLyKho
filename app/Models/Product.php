@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['id', 'name', 'description', 'price', 'image_path', 'brand'];
-      /**
+    /**
      * The primary key associated with the table.
      *
      * @var string
@@ -33,8 +33,10 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_product');
+        return $this->belongsToMany(Category::class, 'category_product')
+            ->withTimestamps();
     }
+
 
     public function inventory()
     {
@@ -44,12 +46,16 @@ class Product extends Model
     public function transactions()
     {
         return $this->belongsToMany(Transaction::class, 'product_transaction')
-                    ->withPivot('quantity');
+            ->withPivot('quantity');
     }
+
+    public function warehouses()
+{
+    return $this->belongsToMany(Warehouse::class, 'warehouse_inventory');
+}
 
     public function warehouseInventory()
     {
         return $this->hasMany(WarehouseInventory::class, 'product_id');
     }
-    
 }
