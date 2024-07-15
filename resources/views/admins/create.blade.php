@@ -73,9 +73,11 @@
             
 
             <div class="relative z-0 w-full mb-5 group">
-                <input class="form-control" name="image_path" type="file" id="image_path">
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hình ảnh</label>
+                <input class="form-control" name="image_path" type="file" id="image_path" accept="image/*">
+                <div id="image-error" class="text-red-600 mt-2"></div>
             </div>
-
+        
             <button type="submit" class="text-primary-700 mt-10 inline-flex items-center border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-primary-600 dark:hover:bg-primary-600 dark:hover:text-white dark:focus:ring-primary-800">
                 <svg class="mr-1 -ml-1 w-6 h-6 text-primary-700 dark:text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"></path>
@@ -85,6 +87,46 @@
             
         </form>
     </div>
+    <script>
+                document.addEventListener('DOMContentLoaded', function() {
+            let value = priceInput.value.replace(/[^\d]/g, '');
+            let formattedValue = formatInputValue(value);
+            priceInput.value = formattedValue;
+        });
+
+        const imageInput = document.getElementById('image_path');
+        const imageError = document.getElementById('image-error');
+
+        imageInput.addEventListener('change', function(event) {
+            // Clear previous error messages
+            imageError.textContent = '';
+
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+
+                img.onload = function() {
+                    const width = img.width;
+                    const height = img.height;
+
+                    // Check if the aspect ratio is 1:1
+                    if (width !== height) {
+                        imageError.textContent = 'Ảnh không phải tỉ lệ 1:1.';
+                        // Optionally, you can clear the file input
+                        imageInput.value = '';
+                    }
+                };
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+    </script>
 @endsection
 
 

@@ -23,7 +23,7 @@ class CreateStorageManagementTables extends Migration
 
         // Create categories table
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
+            $table->string('id', 60)->primary(); // Modified here
             $table->string('name');
             $table->timestamps();
             $table->charset = 'utf8mb4';
@@ -33,7 +33,7 @@ class CreateStorageManagementTables extends Migration
         // Create pivot table for many-to-many relationship between products and categories
         Schema::create('category_product', function (Blueprint $table) {
             $table->string('product_id', 60)->constrained('products', 'id')->onDelete('cascade');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->string('category_id', 60)->constrained('categories', 'id')->onDelete('cascade'); // Modified here
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';

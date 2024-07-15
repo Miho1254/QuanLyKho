@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chỉnh sửa người dùng</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        #preview {
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 @extends('layouts.app')
@@ -64,20 +72,36 @@
             <div class="relative z-0 w-full mb-5 group">
                 <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Vai trò</label>
                 <label class="inline-flex items-center">
-                    <input type="radio" name="role" value="admin" class="form-radio text-primary-600" {{ $user->role == 'admin' ? 'checked' : '' }} required>
+                    <input type="radio" name="role" value="admin" class="form-radio text-primary-600"
+                        {{ $user->role == 'admin' ? 'checked' : '' }} required>
                     <span class="ml-2 text-sm text-gray-900 dark:text-gray-300">Admin</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" name="role" value="user" class="form-radio text-primary-600" {{ $user->role == 'user' ? 'checked' : '' }}>
+                    <input type="radio" name="role" value="user" class="form-radio text-primary-600"
+                        {{ $user->role == 'user' ? 'checked' : '' }}>
                     <span class="ml-2 text-sm text-gray-900 dark:text-gray-300">User</span>
                 </label>
             </div>
-            
-            <div class="relative z-0 w-full mb-5 group">
-                <input class="form-control" name="image_path" type="file" id="image_path">
-                @if ($user->image_path)
-                    <img src="{{ asset($user->image_path) }}" alt="Current Image" class="mt-2 w-32 h-32">
+
+            <div class="mb-4">
+                <label for="image_path" class="block text-sm font-medium text-gray-900 dark:text-white">Ảnh đại diện</label>
+                <input type="file" name="image_path" id="image_path"
+                    class="mt-1 block w-full text-sm text-gray-500 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                <div id="image-preview" class="mt-2">
+                    <p id="new-image-message" style="display: none;"
+                        class="mt-10 block text-sm font-medium text-gray-900 dark:text-white">Ảnh mới</p>
+                    <img id="preview" style="display: none;" />
+                </div>
+                <p id="message" class="text-red-500 text-sm mt-2"></p>
+                @if (isset($user) && $user->image_path)
+                    <div class="mt-2">
+                        <p class="mt-10 block text-sm font-medium text-gray-900 dark:text-white">Ảnh cũ</p>
+                        <img src="{{ asset($user->image_path) }}" alt="User Image" class="mt-2" style="max-width: 200px;">
+                    </div>
                 @endif
+                @error('image_path')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="flex justify-end">
@@ -118,6 +142,43 @@
                 document.getElementById('deleteForm').submit();
             }
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageInput = document.getElementById('image_path');
+            const previewImage = document.getElementById('preview');
+            const message = document.getElementById('message');
+            const newImageMessage = document.getElementById('new-image-message');
+
+            imageInput.addEventListener('change', function() {
+                const file = imageInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        const img = new Image();
+                        img.src = event.target.result;
+                        img.onload = function() {
+                            const width = img.width;
+                            const height = img.height;
+
+                            if (width === height) {
+                                previewImage.src = img.src;
+                                previewImage.style.display = 'block';
+                                message.textContent = '';
+                                newImageMessage.style.display = 'block';
+                            } else {
+                                message.textContent = 'Ảnh không phải tỷ lệ 1:1';
+                                previewImage.style.display =
+                                'none'; // Hide the preview if not 1:1 ratio
+                                imageInput.value = ''; // Clear the input value
+                                newImageMessage.style.display = 'none';
+                            }
+                        };
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
     </script>
 @endsection
 
