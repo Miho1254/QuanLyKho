@@ -3,7 +3,7 @@
     <div class="" style="height: 9%; width: 100%;">
         <nav class=" border-gray-200 dark:bg-gray-900">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
@@ -95,10 +95,10 @@
                                 công ty</h2>
                             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                                 <li class="mb-4">
-                                    <a href="https://flowbite.com/" class="hover:underline">Trang Chủ</a>
+                                    <a href="{{ route('home') }}" class="hover:underline">Trang Chủ</a>
                                 </li>
                                 <li>
-                                    <a href="https://tailwindcss.com/" class="hover:underline">Sản Phẩm</a>
+                                    <a href="{{ route('products.index') }}" class="hover:underline">Sản Phẩm</a>
                                 </li>
                             </ul>
                         </div>
@@ -107,13 +107,13 @@
                             </h2>
                             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                                 <li class="mb-4">
-                                    <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
+                                    <a href="https://github.com/Miho1254/QuanLyKho" class="hover:underline ">Github</a>
                                 </li>
                                 <li>
                                     <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
                                 </li>
                                 <li class="mb-4 mt-4">
-                                    <a href="https://www.facebook.com/" class="hover:underline ">facebook</a>
+                                    <a href="https://www.facebook.com/CLBThoidaimoi2020/" class="hover:underline ">facebook</a>
                                 </li>
                             </ul>
                         </div>
@@ -123,14 +123,14 @@
                             </h2>
                             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                                 <li class="mb-4 mt-1">
-                                    <a href="#" class="hover:underline">Nhập Kho</a>
+                                    <a href="{{ route('imports.index') }}" class="hover:underline">Nhập Kho</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="hover:underline">Xuất Kho</a>
+                                    <a href="{{ route('exports.index') }}" class="hover:underline">Xuất Kho</a>
                                 </li>
 
                                 <li class="mt-4">
-                                    <a href="#" class="hover:underline">Nhân Viên</a>
+                                    <a href="{{ route('admins.index') }}" class="hover:underline">Nhân Viên</a>
                                 </li>
                             </ul>
                         </div>
