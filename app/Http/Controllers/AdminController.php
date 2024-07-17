@@ -10,11 +10,27 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(8);
+        if ($request->has('search')) {
+            $search = $request->input('search');
+
+            // Tìm kiếm theo nhiều trường
+            $users = User::where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%')
+                ->orWhere('fullname', 'like', '%' . $search . '%')
+                ->paginate(8);
+
+            $users->appends(['search' => $search]);
+
+        } else {
+            $users = User::paginate(8);
+        }
+
         return view('admins.index', compact('users'));
     }
+
+
 
     public function create()
     {
@@ -24,7 +40,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->all();
-        
+
         // Mã hóa mật khẩu nếu có
         if (isset($requestData['password'])) {
             $requestData['password'] = Hash::make($requestData['password']);
@@ -90,9 +106,9 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->route('admins.index')
-            ->with('success', 'Cập nhật người dùng thành công.');        
+            ->with('success', 'Cập nhật người dùng thành công.');
     }
-                        
+
     public function destroy($id)
     {
         $user = User::find($id);

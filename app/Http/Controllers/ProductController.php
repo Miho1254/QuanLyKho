@@ -13,14 +13,25 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Lấy tất cả sản phẩm từ cơ sở dữ liệu
-        $products = Product::paginate(8);
-
+        // Nếu tồn tại query 'search'
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            
+            // Tìm kiếm sản phẩm theo tên hoặc mô tả
+            $products = Product::where('name', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%')
+                ->paginate(8);
+            $products->appends(['search' => $search]); // Giữ lại giá trị tìm kiếm cho phân trang
+        } else {
+            // Nếu không có tìm kiếm, lấy tất cả sản phẩm
+            $products = Product::paginate(8);
+        }
+    
         // Chuyển dữ liệu tới view
         return view('products.index', compact('products'));
-    }
+    }    
 
     public function create()
     {

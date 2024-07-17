@@ -16,18 +16,15 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        Log::debug("Đang chạy hàm login");
-
         $credentials = $request->only('email', 'password');
-	Log::debug($credentials);
+
         if (Auth::attempt($credentials)) {
             Log::debug("đã login");
             Log::debug(Auth::check());
             return redirect()->intended('/');
-	}
-	else {
-	   Log::debug("khong auth login duoc");
-	}
+        } else {
+            Log::debug("khong auth login duoc");
+        }
 
         return redirect()->back()->withErrors(['email' => 'Email hoặc mật khẩu không chính xác']);
     }

@@ -15,6 +15,8 @@ class CheckSession // Correct class name
 
         // Kiểm tra nếu người dùng đã đăng nhập
         if (Auth::check()) {
+            $user = Auth::user();
+
             // Ngăn chặn người dùng đã đăng nhập truy cập vào trang login
             if ($path === 'login') {
                 Log::debug('Đã đăng nhập, chuyển hướng về trang chủ.');
