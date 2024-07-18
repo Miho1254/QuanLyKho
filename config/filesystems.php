@@ -39,9 +39,9 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage', // Đảm bảo cấu hình đúng đường dẫn tới storage
             'visibility' => 'public',
-            'throw' => false,
+            'links' => [public_path('storage')], // Thêm dòng này để Laravel tự động tạo liên kết
         ],
 
         's3' => [

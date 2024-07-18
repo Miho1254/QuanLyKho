@@ -77,96 +77,94 @@
                             </form>
                         </div>
 
-                            <div class="overflow-auto" style="max-height: 600px">
-                                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <thead
-                                        class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr class="">
-                                            <th scope="col" class="p-4">
+                        <div class="overflow-auto" style="max-height: 600px">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <thead
+                                    class=" text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr class="">
+                                        <th scope="col" class="p-4">
+                                            <div class="flex items-center">
+                                                <input id="checkbox-all-search" type="checkbox"
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                                            </div>
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Tên Sản Phẩm / hãng
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Hãng
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Giá
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Chỉnh Sửa
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($products as $product)
+                                        <tr
+                                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <td class="w-4 p-4">
                                                 <div class="flex items-center">
-                                                    <input id="checkbox-all-search" type="checkbox"
+                                                    <input id="checkbox-table-search-{{ $product->id }}" type="checkbox"
                                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                                                    <label for="checkbox-table-search-{{ $product->id }}"
+                                                        class="sr-only">checkbox</label>
+                                                </div>
+                                            </td>
+                                            <th scope="row"
+                                                class="flex items-center px-6 py-7 text-gray-900 whitespace-nowrap dark:text-white">
+                                                <img class="w-14 h-14 rounded -left-1 product-image"
+                                                    src="{{ $product->image_path }}" alt="{{ $product->name }} image">
+                                                <div class="ps-3">
+                                                    <div class="text-base font-semibold product">{{ $product->name }}
+                                                    </div>
                                                 </div>
                                             </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Tên Sản Phẩm / hãng
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Hãng
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Giá
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                Chỉnh Sửa
-                                            </th>
+                                            <td class="px-6 py-4">
+                                                <div class="flex items-center Status">
+                                                    {{ $product->brand }}
+                                                </div>
+                                            </td>
+
+                                            <td class="px-6 py-4 font-bold price">
+                                                {{ number_format($product->price, 0, ',', '.') }}đ
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <a href="{{ route('products.edit', ['id' => $product->id]) }}"
+                                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chỉnh
+                                                    Sửa</a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($products as $product)
-                                            <tr
-                                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                                <td class="w-4 p-4">
-                                                    <div class="flex items-center">
-                                                        <input id="checkbox-table-search-{{ $product->id }}"
-                                                            type="checkbox"
-                                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        <label for="checkbox-table-search-{{ $product->id }}"
-                                                            class="sr-only">checkbox</label>
-                                                    </div>
-                                                </td>
-                                                <th scope="row"
-                                                    class="flex items-center px-6 py-7 text-gray-900 whitespace-nowrap dark:text-white">
-                                                    <img class="w-14 h-14 rounded -left-1 product-image"
-                                                        src="{{ asset($product->image_path) }}"
-                                                        alt="{{ $product->name }} image">
-                                                    <div class="ps-3">
-                                                        <div class="text-base font-semibold product">{{ $product->name }}
-                                                        </div>
-                                                    </div>
-                                                </th>
-                                                <td class="px-6 py-4">
-                                                    <div class="flex items-center Status">
-                                                        {{ $product->brand }}
-                                                    </div>
-                                                </td>
-
-                                                <td class="px-6 py-4 font-bold price">
-                                                    {{ number_format($product->price, 0, ',', '.') }}đ
-                                                </td>
-                                                <td class="px-6 py-4">
-                                                    <a href="{{ route('products.edit', ['id' => $product->id]) }}"
-                                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Chỉnh
-                                                        Sửa</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <!-- Pagination -->
-                            <div class="flex justify-center mt-4">
-                                {{ $products->links() }}
-                            </div>
-
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
+
+                        <!-- Pagination -->
+                        <div class="flex justify-center mt-4">
+                            {{ $products->links() }}
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        document.getElementById('table-search-users').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault(); // Ngăn chặn hành động mặc định của phím Enter
-                document.getElementById('search-form').submit(); // Gửi form
-            }
-        });
-    </script>
-    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById('table-search-users').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Ngăn chặn hành động mặc định của phím Enter
+            document.getElementById('search-form').submit(); // Gửi form
+        }
+    });
+</script>
+
 </html>
