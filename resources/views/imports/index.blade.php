@@ -88,6 +88,8 @@
                                     <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">Kho hàng</th>
                                     <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">Nhập lúc</th>
                                     <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">Cập nhật lúc</th>
+                                    <th scope="col" class="px-6 py-3 border-b dark:border-gray-600">Thao tác</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,6 +110,16 @@
                                             {{ $import->created_at }}</td>
                                         <td class="px-6 py-4 border-b dark:border-gray-600" data-timestamp="1623456789">
                                             {{ $import->updated_at }}</td>
+                                            <td class="px-6 py-4 border-b dark:border-gray-600">
+                                                <form action="{{ route('imports.destroy', $import->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa phiếu nhập kho này không?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-200 font-medium rounded-lg text-sm px-3 py-1.5">
+                                                        Xóa
+                                                    </button>
+                                                </form>
+                                            </td>
+    
                                     </tr>
                             </tbody>
                             @endforeach

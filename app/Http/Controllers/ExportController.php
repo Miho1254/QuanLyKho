@@ -75,6 +75,7 @@ class ExportController extends Controller
     {
         // Find the export transaction
         $export = Transaction::findOrFail($id);
+        $export->delete();
 
         // Delete the export transaction and related products
         Transaction::where('id', $export->id)->where('type', 'export')->delete();

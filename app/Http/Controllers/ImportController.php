@@ -126,6 +126,7 @@ class ImportController extends Controller
     {
         // Find the import transaction
         $import = Transaction::findOrFail($id);
+        $import->delete();
 
         // Delete the import transaction and related products
         Transaction::where('id', $import->id)->where('type', 'import')->delete();
